@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Head-->
+
+<%- include('partials/head', { title: 'Resultados' }) %>
+
+<!--Body-->
+
+<body>
+
+<!--Header-->
+
+<%- include('partials/header') %>
+
+<!--Products search-->
+
+    <div>
+        <h2>Resultados de la búsqueda: <%= formSearch>% </h2>
+    </div>
+
+    <% productSearch.forEach( item => { %>
+
+    <section>
+        <a href="">
+            <figure class="product-box_image">
+                <img src="/products/detail/<%= item.id %>" alt="imagen de producto">
+            </figure>
+
+            <article class="product-box_data">
+                <h3><%= item.title %></h3>
+                <p><%= item.author %></p>
+                <h2>$<%= item.price %></h2>
+            </article>
+        </a>
+    </section>
+
+    <% }) %>
+
+    <% if(productSearch.length == 0) { %>
+        <div class="col-12">
+            <h2 class="" style="color: tomato;">No hay productos que coincidan con esa búsqueda</h2>
+        </div>
+        <% } %>
+
+</body>	
+</html>

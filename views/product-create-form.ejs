@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Head-->
+
+<%- include('partials/head.ejs', { title: 'Crear' }) %>
+
+<!--Body-->
+
+<body>
+    <main>
+        <h3>Agregar un nuevo producto</h3>
+        <form action="/products" method="POST" enctype="multipart/form-data">
+            <div>
+                <div>
+                    <label for="title">Titulo del libro</label>
+                </div>
+                <input type="text" name="title" placeholder="Titulo del libro ">
+            </div>
+            <div>
+                <div>
+                    <label for="author">Autor del libro</label>
+                </div>
+                <input type="text" name="author" placeholder="Ej: William Shakespierre">
+            </div>
+            <div>
+                <div>
+                    <label for="price">Precio</label>
+                </div>
+                <input type="text" name="price" placeholder="Ej: 1000">
+            </div>
+            <div class="">
+                <div>
+                <label for="category" class="form-label">Categoría:</label>
+                </div>
+                <select name="category" id="category" class="form-input">
+                    <option value="">Elegí</option>
+                    <option value="on-sale">En oferta</option>
+                    <option value="visited">Últimos agregados</option>
+                    <option value="new-release">Best Seller</option>
+                </select>
+            </div>
+            <div>
+                <div>
+                    <label for="description">Descripción</label>
+                </div>
+                <textarea name="description" id="description" cols="30" rows="10"></textarea>
+            </div>
+            <div>
+                <div>
+                    <label for="publisher">Editorial</label>
+                </div>
+                <input type="text" name="publisher" placeholder="Ej: Planeta">
+            </div>
+            <div>
+                <div>
+                    <label for="image">Portada del libro</label>
+                </div>
+                <input type="file" name="image" id="image" accept=".jpg, .jpeg, .tiff">
+            </div>
+
+            
+            <div>    
+                <button type="submit">
+                    <div>
+                        <p>CARGAR</p>
+                    </div>
+                </button>
+            </div>
+        </form>
+    </main>
+    
+</body>

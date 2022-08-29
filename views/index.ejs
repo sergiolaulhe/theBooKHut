@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Head-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a the BooK Hut Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">    
+    <script src="https://kit.fontawesome.com/f5b0ad43f8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<!--Body-->
+
+<body>
+
+<!--Header-->
+
+<%- include ('partials/header') %>
+
+<!--Main-->
+
+<main>
+
+<!-- Seccion de productos-->
+
+<!--Show best selling products-->
+
+    <section class="product-section">
+        <header>
+            <h2>Los más vendidos</h2>
+        </header>
+
+        
+        <div class="products-container">
+            <% products.forEach (products => { %>
+                <% if (products.category == 'visited') { %>
+            <a href="/products/detail/<%= products.id%>">
+            <article class="book-item">
+                <div class="item-img">    
+                    <img class="book-image" src="/images/products/<%= products.image ? products.image : 'default.jpeg' %>" alt="book-image">
+                </div>
+                <div class="item-info">
+                    <h3><%= products.title %></h3>
+                    <p><%= products.author %></p>
+                </div>
+                <div class="item-price">
+                    <p>$<%= products.price %></p>
+                </div>
+            </article>
+        </a>
+            <% } %>
+        <% }) %>
+        
+        
+    </div>
+    </section>
+
+    <section class="product-section">
+        <header>
+            <h2>Nuevos lanzamientos</h2>
+        </header>
+
+        
+        <div class="products-container">
+            <% products.forEach (products => { %>
+                <% if (products.category == 'new-release') { %>
+            <a href="/products/detail/<%= products.id%>">
+            <article class="book-item">
+                <div class="item-img">    
+                    <img class="book-image" src="/images/products/<%= products.image ? products.image : 'default.jpeg' %>" alt="book-image">
+                </div>
+                <div class="item-info">
+                    <h3><%= products.title %></h3>
+                    <p><%= products.author %></p>
+                </div>
+                <div class="item-price">
+                    <p>$<%= products.price %></p>
+                </div>
+            </article>
+        </a>
+        <% } %>
+    <% }) %>
+        
+        
+        </div>
+    </section>
+
+    <section class="product-section">
+        <header>
+            <h2>En oferta</h2>
+        </header>
+
+        <% products.forEach (products => { %>
+            <% if (products.category == 'on-sale') { %>
+
+                <%- include ('partials/product') %>
+
+            <% } %>
+        <% }) %>
+
+        
+        <div class="products-container">
+
+        </div>
+    </section>
+
+    <hr class="separator">
+
+<!-- Suscripciones-->
+
+    <div class="suscription-top">
+        <section class="mail-suscription-section">
+            <div class="suscription-widget">
+                <div class="suscription-text">
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                    <p>Recibe nuestras ofertas y novedades</p>
+                    <div class="suscription-form">
+                        <form action="/suscription" method="post">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Correo electronico" name="news-suscription">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="suscription-button">Suscribite ahora</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <hr class="separator">
+
+<!--Social Media-->
+
+    <div class="footer-social-media">
+        <h3>Siguenos</h3>
+        <ul class="footer-social-media-list">
+            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+            <li><a href="#"></a><i class="fa-brands fa-square-facebook"></i></li>
+            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-pinterest"></i></a></li>
+        </ul>
+
+    </div>
+
+</main>
+
+<!--Footer-->
+
+<%- include ('partials/footer') %>
+
+</body>
+
+</html>

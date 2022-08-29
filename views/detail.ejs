@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Head-->
+
+<%- include('partials/head', { title: product.title }) %>
+
+<!--Body-->
+
+<body>
+
+<!--Header-->
+
+<%- include('partials/header') %>
+
+<!--Main-->
+<main>
+<!-- Product detail -->
+<div class="">
+    <div class="">
+        <div class="">
+            <h2 class="products-title">Detalle del producto: <%= product.title %></h2>
+        </div>
+    </div>
+<div>
+    <img src="/images/products/<%= product.image %>" alt="">
+</div>
+<p class="product-detail-description">
+    <%= product.description %>
+</p>
+
+<a href="/products/edit/<%= product.id %>" class="action-button edit">EDITAR PRODUCTO</a>
+<form action="/products/edit/<%= product.id %>?_method=PUT" method="POST" style="display: inline-flex">
+    <button type="submit" class="action-button delete">EDITAR</button>
+</form>
+			<form action="/products/delete/<%= product.id %>?_method=DELETE" method="POST" style="display: inline-flex">
+				<button type="submit" class="action-button delete">ELIMINAR</button>
+			</form>
+
+
+</main>
+    
+</body>
+</html>

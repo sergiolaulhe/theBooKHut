@@ -1,0 +1,62 @@
+[
+ {
+  "title": "La Felicidad es un Hábito",
+  "author": "Hortencia Márquez",
+  "price": "2100",
+  "category": "visited",
+  "description": "La felicidad es un habito",
+  "publisher": "Ojo Dulce",
+  "image": "1660839870472-id2.jpg",
+  "id": 17
+ },
+ {
+  "title": "Viajando en Invierno",
+  "author": "Josep Lopez",
+  "price": "2100",
+  "category": "visited",
+  "description": "Pura inspiración en cada aventura. ",
+  "publisher": "Planeta",
+  "image": "1661036925101-id1.jpg",
+  "id": 2
+ },
+ {
+  "title": "El Mundo Contra el Más Allá",
+  "author": "Julián Palomino",
+  "price": "2800",
+  "category": "visited",
+  "description": "El segundo tomo de la saga \"El Gran Caos Solar\".",
+  "publisher": "Universitaria",
+  "image": "1661037172123-id3.jpg",
+  "id": 3
+ },
+ {
+  "title": "Orgullo y Prejuicio",
+  "author": "Jane Austen",
+  "price": "2700",
+  "category": "visited",
+  "description": "Edición conmemorativa. Bicentenario.",
+  "publisher": "Austral",
+  "image": "1661037356900-id7.jpg",
+  "id": 4
+ },
+ {
+  "title": "Arkitectura Moderna",
+  "author": "Jaime Martínez",
+  "price": "1000",
+  "category": "on-sale",
+  "description": "Arquitectura del siglo XXI.",
+  "publisher": "Mitica",
+  "image": "1661041049596-id4.jpg",
+  "id": 5
+ },
+ {
+  "title": "El Principito",
+  "author": "Antoine de Saint-Exupéry",
+  "price": "1800",
+  "category": "new-release",
+  "description": "La historia del principito.",
+  "publisher": "Red Hat",
+  "image": "1661041834567-id6.jpg",
+  "id": 6
+ }
+]

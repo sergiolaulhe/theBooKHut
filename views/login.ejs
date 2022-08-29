@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Head-->
+
+<%- include('partials/head.ejs', { title: 'Inicia sesión' }) %>
+
+<!--Body-->
+
+<body>
+
+<!--Header-->
+
+    <%- include('partials/header.ejs') %>
+
+<!--Header-->
+
+<!--Main-->
+    
+    <main>
+        <div class="section-title">
+            <h2>Inicia sesión</h2>
+        </div>
+        <div class="form-container">
+            <form action="/users/login" method="POST" class="form">
+
+                <div class="group-form">
+                    <div class="group-label">
+                        <label class="label" for="email" >Ingresa tu correo electrónico</label>
+                    </div>
+                    <input type="email" name="email" placeholder="Correo electrónico">
+                </div>
+
+                <div class="group-form">
+                    <div class="group-label">
+                        <label class="label" for="password">Ingresa tu contraseña</label>
+                    </div>
+                    <input type="password" name="password" placeholder="Contraseña">
+                </div>
+
+                <div class="password-recovery-link">
+                    <a href="#">¿Has olvidado tu contraseña?</a>
+                </div>
+
+                <div class="submit-button">
+                    <button type="submit" class="button">
+                        <div>
+                            <p>INICIAR SESIÓN</p>
+                        </div>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <hr class="separator">
+        <section class="sign-up-section">
+            <p class="legend">¿No tenes cuenta?</p>
+            <button type="submit" class="button">
+                <p>REGISTRATE EN the BooK Hut</p>
+
+            </button>
+
+        </section>
+    </main>
+
+
+    
+</body>
