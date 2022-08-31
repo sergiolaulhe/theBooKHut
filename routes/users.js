@@ -12,19 +12,24 @@ const fieldsValidationsMiddleware = require('../middlewares/fieldsValidationsMid
 // ***** Validations ***** //
 
 const validateRegisterForm = [
-    body('email').notEmpty().withMessage('Debes completar este campo').isEmail().withMessage('Debes ingresar un email en formato valido'),
+    body('name').notEmpty().withMessage('Debes completar este campo'),
+    body('email').notEmpty().withMessage('Debes completar este campo').bail().isEmail().withMessage('Debes ingresar un email en formato valido'),
     body('mailConfirmation').notEmpty().withMessage('Debes completar este campo').isEmail().withMessage('Debes ingresar un email en formato valido'),
     body('password').notEmpty().withMessage('Debes completar este campo'),
     body('userName').notEmpty().withMessage('Debes completar este campo'),
 ]
 
-//***** GET Register/Login *****//
+//***** GET Register *****//
 
 router.get('/register', usersController.register);
 router.post('/register', logDBMiddleware, validateRegisterForm, usersController.create);
 
+//***** GET Login *****//
+
 router.get('/login', usersController.login);
 router.post('/login', logDBMiddleware, usersController.processedLogin);
+
+//***** User Profile *****//
 
 
 

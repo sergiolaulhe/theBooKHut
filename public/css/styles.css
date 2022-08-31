@@ -180,6 +180,31 @@ li:hover {
     width: 5rem;
 }
 
+.suscription-button {
+    width: 100%;
+    font-size: 16px;
+    line-height: 40px;
+    font-weight: 700;
+    background-color: #03364F;
+    color: #D0D3D4;
+    border: 0px;
+    border-radius: 500px;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    touch-action: manipulation;
+    transition-duration: 33ms;
+    transition-property: background-color, border-color, color, box-shadow, filter, transform;
+    user-select: none;
+    vertical-align: middle;
+    transform: translate3d(0px, 0px, 0px);
+    padding: 0px;
+    align-self: center;
+    margin-top: 7px;
+}
+
 /***** Social Media *****/
 
 .footer-social-media {
@@ -300,7 +325,7 @@ input {
 
 .button {
     width: 100%;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 20px;
     font-weight: 700;
     background-color: #03364F;
@@ -328,6 +353,10 @@ input {
 }
 
 /************* Register **************/
+
+.is-invalid {
+    border: red solid 1px
+}
 
 /************* Product Detail **************/
 

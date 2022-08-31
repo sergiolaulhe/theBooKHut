@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Head-->
+
+<%- include('partials/head.ejs', { title: 'Crear' }) %>
+
+<body>
+
+<!--Header-->
+
+<%- include('partials/header') %>
+
+<!--Main-->
+
+    <main>
+
+        <div class="section-title">    
+            <h2>Registrate: ingresa tus datos y crea tu cuenta.</h2>
+        </div>
+
+        <div class="form-container">
+
+            <form method="POST" action="/users/register" class="form">
+
+                <div class="group-form">
+                    <div class="group-label">
+                        <label class="label" for="email">Ingresa tu correo electrónico</label>
+                    </div>
+                    <input type="email" name="email" placeholder="Correo electrónico">
+                </div>
+
+                <div class="group-form">
+                    <div class="group-label">
+                        <label class="label" for="mailConfirmation">Confirma el correo electrónico</label>
+                    </div>
+                    <input type="email" name="mailConfirmation" placeholder="Correo electrónico">
+                </div>
+
+                <div class="group-form">
+                    <div class="group-label">
+                        <label class="label" for="password">Crea una contraseña</label>
+                    </div>
+                    <input type="password" name="password" placeholder="Crea una contraseña">
+                </div>
+    
+                <div class="group-form">
+                    <div class="group-label">
+                        <label class="label" for="userName">Elige tu nombre de usuario</label>
+                    </div>
+                    <input type="text" name="userName" placeholder="Nombre de usuario">
+                </div>
+
+                <div class="group-form">
+                    <div class="group-label">
+                        <label class="label" for="birthDate">¿Cuál es tu fecha de nacimiento?</label>
+                    </div>
+                    <div class="group-label">
+                        <label class="label" for="day">Día</label>
+                    </div>
+                    <input type="text" name="day" placeholder="DD">
+                </div>
+                <div>
+                    <div>
+                        <div>
+                            <label class="label" for="month">Mes</label>
+                        </div>
+                        <select name="month" id="month">
+                            <option selected="" disabled="" value="">Mes</option>
+                            <option value="01">Enero</option>
+                            <option value="02">Febrero</option>
+                            <option value="03">Marzo</option>
+                            <option value="04">Abril</option>
+                            <option value="05">Mayo</option>
+                            <option value="06">Junio</option>
+                            <option value="07">Julio</option>
+                            <option value="08">Agosto</option>
+                            <option value="09">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <div>
+                            <label class="label" for="year">Año</label>
+                        </div>
+                        <input type="text" id="year" inputmode="numeric" name="year" placeholder="AAAA">
+                    </div>
+                </div>
+
+                <div class="submit-button">
+                    <button class="button">
+                        <div>
+                            <p>ENVIAR</p>
+                        </div>
+                    </button>
+                </div>
+                
+                
+                
+                
+                
+            </form>
+
+        </div>
+        
+
+
+    </main>
+</body>
+
+</html>

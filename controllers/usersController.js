@@ -22,24 +22,35 @@ const userController = {
     },
 
     create: (req, res) => {
-        console.log(req.body)
-        const errors = validationResult(req);
-        if (errores.isEmpty()) {
-            const newUser = req.body;
-            res.render('/');
-        } else {
-            res.render('register-create-form', { errors: errors.array(), old: req.body });
-        };
-        const userRegister = {
-            email: req.body.email,
-            confirm: req.body.confirm,
-            password: req.body.password,
+        const resultValidation = validationResult(req);
+        
+        if (resultValidation.errors.length > 0) {
+            return res.render('register-create-form', {
+                errors: resultValidation.mapped(),
+                oldData: req.body
+            });
         }
+        return res.send('Exito!')
 
-        //Donde guardamos los datos ingresados?
-        res.redirect('/')
+        // // if (errores.isEmpty()) {
+        // //     const newUser = req.body;
+        // //     res.render('/');
+        // }
+        // // } else {
+        // //     res.render('register-create-form', { errors: errors.array(), old: req.body });
+        // // };
+        // // // const userRegister = {
+        // // //     email: req.body.email,
+        // // //     confirm: req.body.confirm,
+        // // //     password: req.body.password,
+        // // // }
 
-    }
+        // // res.redirect('/')
+
+    },
+
+    //***** User Profile *****//
+
 };
 
 module.exports = userController;
