@@ -329,7 +329,13 @@ input {
 
 /************* Register **************/
 
+/************* Product Detail **************/
 
+.product-detail-img {
+    width: 45vw;
+    margin: 1rem;
+
+}
 
 
 

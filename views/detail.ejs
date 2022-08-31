@@ -16,18 +16,57 @@
 <!--Main-->
 <main>
 <!-- Product detail -->
-<div class="">
+
+<section class="">
     <div class="">
-        <div class="">
-            <h2 class="products-title">Detalle del producto: <%= product.title %></h2>
-        </div>
+            <h2 class="products-title"><%= product.title %></h2>
     </div>
+    <div>
+        <p>Por <%= product.author %></p>
+    </div>
+    <div class="product-detail-img">
+        <img src="/images/products/<%= product.image %>" alt="">
+    </div>
+    <hr class="separator">
+    <div>
+        <p>AR$<%= product.price %></p>
+    </div>
+    <form action="#">
+        <button type="submit">Añadir a la cesta</button>
+    </form>
+</section>
+
+
+<section>
+    <div>
+        <h3>Detalle del producto:</h3>
+    </div>        
+    </div>
+        <p>Titulo: <%= product.title %></p>
+    </div>
+    <div>
+        <p class="product-detail-description">Descripción: <%= product.description %></p>
+    </div>
+    <div>
+        <p>Editorial: </p>
+    </div>
+    <div>
+        <p>Fecha de publicación: </p>
+    </div>
+    <div>
+        <p>Idioma: </p>
+    </div>
+
+</section>
+
+
 <div>
-    <img src="/images/products/<%= product.image %>" alt="">
+    
+    <div>
+        <a href="#">Detalle de envío</a>
+    </div>
+    
 </div>
-<p class="product-detail-description">
-    <%= product.description %>
-</p>
 
 <a href="/products/edit/<%= product.id %>" class="action-button edit">EDITAR PRODUCTO</a>
 <form action="/products/edit/<%= product.id %>?_method=PUT" method="POST" style="display: inline-flex">
@@ -39,6 +78,10 @@
 
 
 </main>
-    
+
+<!--Footer-->
+
+<%- include ('partials/footer') %>
+
 </body>
 </html>

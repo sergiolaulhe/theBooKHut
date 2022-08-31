@@ -28,7 +28,7 @@ const userController = {
             const newUser = req.body;
             res.render('/');
         } else {
-            res.render('register-create-form', { errors: errors.array() });
+            res.render('register-create-form', { errors: errors.array(), old: req.body });
         };
         const userRegister = {
             email: req.body.email,
