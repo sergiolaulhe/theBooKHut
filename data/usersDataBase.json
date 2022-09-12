@@ -1,0 +1,80 @@
+[
+ {
+  "id": 1,
+  "name": "Juan Suarez",
+  "email": "juan@suarez.com",
+  "mailConfirmation": "juan@suarez.com",
+  "password": "87654321",
+  "userName": "Juancito",
+  "day": "25",
+  "month": "02",
+  "year": "1954"
+ },
+ {
+  "id": 2,
+  "name": "Diego Maradona",
+  "email": "diego@maradona.com",
+  "mailConfirmation": "diego@maradona.com",
+  "password": "$2b$10$.x2JTtBWrevvNVaTo8W/GuPpQmoAwOthZ2VkFIOAFiWsns83kqt/2",
+  "userName": "Dieguito",
+  "day": "25",
+  "month": "03",
+  "year": "1954",
+  "avatar": "GettyImages-984947608.jpg"
+ },
+ {
+  "id": 3,
+  "name": "Vespucio Liberti",
+  "email": "vespucio@liberti.com",
+  "mailConfirmation": "vespucio@liberti.com",
+  "password": "$2b$10$LxrWYZ.Q.Fn4aVSQEd6kCexPRWnhqhYlZT/e9yMrZvSlbnprox7D2",
+  "userName": "Vespa",
+  "day": "25",
+  "month": "01",
+  "year": "1901"
+ },
+ {
+  "id": 4,
+  "name": "Sergio Laulhe",
+  "email": "sergiolaulhe@hotmail.com",
+  "mailConfirmation": "sergiolaulhe@hotmail.com",
+  "password": "$2b$10$jdbc4g4Nt6JvcyZwJe9FQOyUc7V2ncvBWS5BslivHBqa7F.s5s1HK",
+  "userName": "Sergi",
+  "day": "1",
+  "month": "01",
+  "year": "1980"
+ },
+ {
+  "id": 5,
+  "name": "Sergio Laulhe",
+  "email": "sergiolaulhe@hotmail.net",
+  "mailConfirmation": "sergiolaulhe@hotmail.net",
+  "password": "$2b$10$ka4ae4tut0RkLi9tzuV9aea6eLUGuT0lGKqMcOK8Le1brDIBw4fJm",
+  "userName": "Sergi",
+  "day": "25",
+  "month": "02",
+  "year": "1980"
+ },
+ {
+  "id": 6,
+  "name": "Admin",
+  "email": "admin@admin.com",
+  "mailConfirmation": "admin@admin.com",
+  "password": "$2b$10$FSQV/QLa1jzL.1lD3sXEeenmDwxvkeMFH3HU8Bg9uvxCWDNnuAfL6",
+  "userName": "Admin",
+  "day": "25",
+  "month": "01",
+  "year": "2022"
+ },
+ {
+  "id": 7,
+  "name": "Jazmin Laulhe",
+  "email": "jaz@hotmail.com",
+  "mailConfirmation": "jaz@hotmail.com",
+  "password": "$2b$10$84Venj4Cl8v6HFoiYoaGB.pEPEIX0cxXxOSGx/UHa.525GvhtuYSy",
+  "userName": "Jaz",
+  "day": "25",
+  "month": "06",
+  "year": "2009"
+ }
+]

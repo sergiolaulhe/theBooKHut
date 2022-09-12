@@ -58,5 +58,25 @@
   "publisher": "Red Hat",
   "image": "1661041834567-id6.jpg",
   "id": 6
+ },
+ {
+  "title": "Juvenil Sangre",
+  "author": "Elisa Pérez",
+  "price": "1600",
+  "category": "new-release",
+  "description": "Una novela de Elisa Perez",
+  "publisher": "Planeta",
+  "image": "1662506850947-id9.jpg",
+  "id": 7
+ },
+ {
+  "title": "Un Regalo del Cielo",
+  "author": "Cecilia Ahern",
+  "price": "2499",
+  "category": "new-release",
+  "description": "Una de las novelas del año.",
+  "publisher": "Planeta Internacional",
+  "image": "1662507230049_img.jpg",
+  "id": 8
  }
 ]

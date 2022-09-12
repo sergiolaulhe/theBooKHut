@@ -1,16 +1,22 @@
 // ***** Require's ***** //
 const express = require('express');
 const methodOverride = require('method-override');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const path = require('path');
 
-const logMiddleware = require('./middlewares/logMiddleware.js');
+
 
 
 
 // ***** Express execution ***** //
 const app = express();
 
-// ***** Middlewares ***** //
+// ***** Middlewares require ***** //
+
+const logMiddleware = require('./middlewares/logMiddleware.js');
+const cookieAuthMiddleware = require('./middlewares/cookieAuthMiddleware');
+const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware');
 
 // Accediendo a recursos estaticos
 
@@ -27,6 +33,24 @@ app.use(express.json());
 // Configuramos la app para poder sobreescribir los metodos originales del formulario
 app.use(methodOverride('method'));
 
+// session
+
+app.use(session( {
+    secret: 'theBooKHut secret',
+    resave: false,
+    saveUninitialized: false
+}));
+
+// Cookie parser
+
+app.use(cookieParser());
+
+// Middlewares
+
+app.use(logMiddleware);
+app.use(cookieAuthMiddleware);
+app.use(userLoggedMiddleware);
+
 // Levantar servidor con Express
 
 app.listen(3100, () => console.log('Servidor en linea en puerto 3100'));
@@ -35,9 +59,9 @@ app.listen(3100, () => console.log('Servidor en linea en puerto 3100'));
 
 // ***** Route System require and use() ***** //
 
-const mainRoutes = require('./routes/main');
-const usersRoutes = require('./routes/users');
-const productsRouter = require('./routes/products');
+const mainRoutes = require('./routes/mainRoutes');
+const usersRoutes = require('./routes/usersRoutes');
+const productsRouter = require('./routes/productsRoutes');
 
 
 
@@ -46,7 +70,7 @@ app.use('/', mainRoutes);
 app.use('/users', usersRoutes);
 app.use('/products', productsRouter);
 
-app.use(logMiddleware);
+
 
 
 

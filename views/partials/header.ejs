@@ -1,4 +1,4 @@
-<header class="main-header">
+<header class="common-header-navbar bg-dark-blue ">
 
     <div class="user-navbar">
         <ul class="left-user-navbar">
@@ -6,12 +6,26 @@
             <a href=""><li><i class="fa-solid fa-envelope"></i></li></a>
         </ul>
 
-        <ul class="right-user-navbar">
-            <li><i class="fa-solid fa-user"></i></li>
-            <a href="users/login"><li>Iniciar sesion</li></a>
-            <a href="users/register"><li>Crear cuenta</li></a>
+            <% if (locals.isLogged) { %>
 
-        </ul>
+            <ul class="right-user-navbar">
+                <li><i class="fa-solid fa-user"></i></li>
+                <a href="users/profile"><li>Hola! <%= locals.userLogged.name %></li></a>
+                <li> / </li>
+                <a href="users/logout"><li>Logout</li></a>
+            </ul>
+
+            <% } else { %>
+
+            <ul class="right-user-navbar">
+                <li><i class="fa-solid fa-user"></i></li>
+                <a href="users/login"><li>Iniciar sesion</li></a>
+                <li> / </li>
+                <a href="users/register"><li>Crear cuenta</li></a>
+            </ul>
+
+            <% } %>
+
     </div>
     
     <div>
@@ -46,7 +60,7 @@
         </div>
     </section>
 
-    <nav class="main-navbar">
+    <nav class="main-header-navbar">
         <ul class="left-navbar">
             <li><a href="/categorias">Categorias</a></li>
             <li><a href="/mas-vendidos">Más vendidos</a></li>

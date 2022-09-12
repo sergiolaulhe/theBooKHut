@@ -1,0 +1,18 @@
+- Inicio de sesion (Login)
+
+email
+
+contraseña
+
+Boton de inicio de sesion
+
+No tenes cuenta? Redireccion a formulario de registro
+
+- Registro de usuario
+
+- Tipos de usuario
+    -cliente
+    -empleado
+    -administrador
+
+Perfil de usuario (userDetails)

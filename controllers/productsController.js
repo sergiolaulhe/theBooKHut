@@ -18,7 +18,7 @@ const productsController = {
     detail: function (req, res) {
         const idProduct = req.params.id;
 		const product = products.find( elemento => elemento.id == idProduct);
-		res.render('detail', {product: product});
+		res.render('productDetail', {product: product});
     },
 
     // Create - Form to create
@@ -32,7 +32,6 @@ const productsController = {
             const newProduct = req.body;
             newProduct.image = req.file.filename;
             newProduct.id = products.length + 1;
-            console.log(newProduct)
             products.push(newProduct);
             fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
             res.redirect('/');

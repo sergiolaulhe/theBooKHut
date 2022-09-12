@@ -13,56 +13,80 @@
 
     <%- include('partials/header.ejs') %>
 
-<!--Header-->
-
 <!--Main-->
     
-    <main>
-        <div class="section-title">
-            <h2>Inicia sesión</h2>
-        </div>
-        <div class="form-container">
-            <form action="/users/login" method="POST" class="form">
+    <main class="main-login">
+        <div class="main-login-container">
+            <div class="main-login-box">
+                <div class="main-login-gap">
 
-                <div class="group-form">
-                    <div class="group-label">
-                        <label class="label" for="email" >Ingresa tu correo electrónico</label>
+                    <div class="section-title">
+                        <h2>Inicia sesión en the BooK Hut</h2>
                     </div>
-                    <input type="email" name="email" placeholder="Correo electrónico">
-                </div>
 
-                <div class="group-form">
-                    <div class="group-label">
-                        <label class="label" for="password">Ingresa tu contraseña</label>
+                    <div class="form-container">
+
+                        <form action="/users/login" method="POST" class="form">
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="email" >Ingresa tu correo electrónico</label>
+                                </div>
+                                <input type="email" name="email" placeholder="Correo electrónico"><br>
+                                <% if (locals.errors && errors.email) { %>
+                                    <div>
+                                        <%= errors.email.msg %>
+                                    </div>
+                                <% } %>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="password">Ingresa tu contraseña</label>
+                                </div>
+                                <input type="password" name="password" placeholder="Contraseña"><br>
+                            </div>
+
+                            <div>
+                                <a href="#" class="password-recovery-link">¿Has olvidado tu contraseña?</a>
+                            </div>
+
+                            <div class="login-button-section">
+                                <div class="remember-me-container">
+                                    <div class="remember-me-box">
+                                        <label for="remember">Recordar mi usuario</label>
+                                        <input type="checkbox" name="remember" class="remember-me"><br>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="submit-button">
+                                <button type="submit" class="button">
+                                    <div>
+                                        <p>INICIAR SESIÓN</p>
+                                    </div>
+                                </button>
+                            </div>
+            
+
+                        </form>
+
                     </div>
-                    <input type="password" name="password" placeholder="Contraseña">
-                </div>
 
-                <div class="password-recovery-link">
-                    <a href="#">¿Has olvidado tu contraseña?</a>
-                </div>
-
-                <div class="submit-button">
-                    <button type="submit" class="button">
-                        <div>
-                            <p>INICIAR SESIÓN</p>
-                        </div>
-                    </button>
-                </div>
-            </form>
-        </div>
-
-        <hr class="separator">
+                    <hr class="separator">
         
-        <section class="sign-up-section">
-            <p class="legend">¿No tenes cuenta?</p>
-            <a href="/users/register"><button class="button">
-                <p>REGISTRATE EN the BooK Hut</p></button></a>
-        </section>
+                    <section class="sign-up-section">
+                        <p class="legend">¿No tenes cuenta?</p>
+                        <a href="/users/register"><button class="button">
+                        <p>REGISTRATE EN the BooK Hut</p></button></a>
+                    </section>
+
+                </div>
+            </div>
+        </div>
     </main>
 
 
     
 </body>
-
 </html>

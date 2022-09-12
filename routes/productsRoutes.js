@@ -2,20 +2,11 @@
 
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
 const { body } = require('express-validator');
 
-//***** Multer configuration *****//
-const storage = multer.diskStorage( {
-    destination: function (req, file, cb) {
-        cb(null, 'public/images/products')
-    },
-    filename: function (req, file, cb){
-        cb(null, Date.now() + '-' + file.originalname)
-    }
-});
+//***** Middlewares *****//
 
-const uploadFile = multer( {storage:storage} );
+const uploadFile = require('../middlewares/multerMiddleware');
 
 //***** Controller Require *****//
 

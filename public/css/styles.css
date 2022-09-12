@@ -6,7 +6,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
-    margin: 0;
+    margin: 0px;
     font-size: 10px;
 }
 
@@ -34,15 +34,17 @@ img {
 .hide-on-mobile {
     display: none;
 }
-/*********** Header *************/
 
-.main-header {
+.bg-dark-blue {
     background-color: #03364F;
-    color: #D0D3D4;
-    font-size: 12px;
-    font-weight: 200;
-
 }
+
+.common-header-navbar {
+    color: #D0D3D4;
+    font-size: 1.5em;
+    font-weight: 200;
+}
+/*********** Header *************/
 
 .user-navbar {
     display: flex;
@@ -120,14 +122,30 @@ li:hover {
     font-size: 8vw;
 }
 
-.main-navbar {
+.main-header-navbar {
     margin-top: 20px;
     display: none;
-}
-
-.main-navbar {
     font-size: 1.5em;
 }
+
+/*********** Navbar *************/
+
+.navbar-container {
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+
+
+
+
 /************* Main **************/
 
 
@@ -269,9 +287,43 @@ footer {
 }
 
 /************* Login **************/
+
+.main-login {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.main-login-container {
+    flex: 3 1 0%;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.main-login-box {
+    max-width: 450px;
+    width: 100%;
+}
+
+.main-login-gap {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
 .section-title {
-    text-align: left;
-    font-size: 14px;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.form-container {
+    display: block;
 }
 
 .form {
@@ -288,7 +340,7 @@ footer {
     display: flex;
     align-items: center;
     font-weight: 700;
-    padding-bottom: 8px;
+    padding-bottom: 16px;
     width: 100%;
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -317,9 +369,36 @@ input {
 }
 
 .password-recovery-link {
+    font-size: 0.8rem;
     padding: 5px;
-    
+    align-items: center;
+    text-decoration: none;
+}
 
+.login-button-section {
+    margin-top: 16px;
+}
+
+.remember-container {
+    padding-bottom: 16px;
+}
+
+.remember-me-box {
+    align-items: center;
+    display: flex;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    min-height: 32px;
+}
+
+.remember-me-box label {
+    padding: 5px;
+}
+
+.remember-me {
+    display: initial;
+    width: fit-content;
+    appearance: auto;
 }
 
 .submit-button {
@@ -354,6 +433,23 @@ input {
     margin: 22px 0px 20px;
     border-top: 1px solid rgb(217, 218, 220);
 }
+
+.sign-up-section {
+    text-align: center;
+}
+
+.legend {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    padding-bottom: 20px;
+}
+
+.sign-up-section a {
+    display: block;
+}
+
 
 /************* Register **************/
 
@@ -400,7 +496,7 @@ input {
     width: 190px;
 }
 
-.main-navbar,
+.main-header-navbar,
 .left-navbar {
     display: flex;
     flex-wrap: wrap;
