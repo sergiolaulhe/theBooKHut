@@ -89,45 +89,11 @@
                             <% } %>
                         </div>
 
-                        <div class="label">
-                            <label for="birthDate">¿Cuál es tu fecha de nacimiento?</label>
-                        </div>
-
                         <div class="group-form">
                             <div class="group-label">
-                        
-                                <div class="label">
-                                    <label for="day">Día</label>
-                                </div>
-                                <input type="text" name="day" placeholder="DD">
-
-                                <div class="label">
-                                    <label for="month">Mes</label>
-                                </div>
-                                <select name="month" id="month">
-                                    <option selected="" disabled="" value="">Mes</option>
-                                    <option value="01">Enero</option>
-                                    <option value="02">Febrero</option>
-                                    <option value="03">Marzo</option>
-                                    <option value="04">Abril</option>
-                                    <option value="05">Mayo</option>
-                                    <option value="06">Junio</option>
-                                    <option value="07">Julio</option>
-                                    <option value="08">Agosto</option>
-                                    <option value="09">Septiembre</option>
-                                    <option value="10">Octubre</option>
-                                    <option value="11">Noviembre</option>
-                                    <option value="12">Diciembre</option>
-                                </select>
-                            
-                                <div>
-                                    <div class="label">
-                                        <label for="year">Año</label>
-                                    </div>
-                                    <input type="text" id="year" inputmode="numeric" name="year" placeholder="AAAA">
-                                </div>
-
+                                <label class="label" for="birth_date" >Fecha de nacimiento</label>
                             </div>
+                                <input type="date" name="birth_date">
                         </div>
                     
                         <div class="submit-button">
@@ -137,6 +103,7 @@
                                 </div>
                             </button>
                         </div>
+                        
                     </form>
                 </div>
 

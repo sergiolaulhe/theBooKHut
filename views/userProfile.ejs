@@ -16,26 +16,63 @@
 
 <body>
 
-<%- include('partials/header') %>
+<%- include('partials/headerSimp') %>
 
-<main>
-    <div>
-        <h2>Hola: <%= user.name %></h2>
+<main class="main-form">
+    <div class="main-form-container">
+        <div class="main-box">
+            <div class="main-form-gap">
+
+                <div class="section-title">
+                    <h2>Informació del perfil de tu cuenta</h2>
+                </div>          
+                <div>
+                    <h2>Hola: <%= user.name %>, has ingresado correctamente</h2>
+                </div>
+
+                <div>
+                    <p>Nombre: <%= user.name %></p>
+                </div>
+    
+                <div>
+                    <p>Usuario: <%= user.userName %></p>
+                </div>
+
+                <div>
+                    <p>Dirección de e-mail: <%= user.email %></p>
+                </div>
+
+                <div>
+                    <p>Fecha de nacimiento: <%= user.day %>/<%= user.month %>/<%= user.year %> </p>
+                </div>
+
+                <div>
+                    <p>Número de teléfono: <%= user.userName %></p>
+                </div>
+
+                <div>
+                    <p>Dirección: <%= user.userName %></p>
+                </div>
+
+                <div class="submit-button">
+                    <button type="submit" class="button">
+                        <div>
+                            <p>EDITAR PERFIL</p>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="submit-button">
+                    <button type="submit" class="button">
+                        <div>
+                            <p>CERRAR CESIÓN</p>
+                        </div>
+                    </button>
+                </div>
+
+            </div>
+        </div>
     </div>
-
-    <div>
-        <p>Nombre de usuario: <%= user.userName %></p>
-    </div>
-
-    <div>
-        <p>Correo electrónico: <%= user.email %></p>
-    </div>
-
-    <div>
-        <p>Fecha de nacimiento: <%= user.day %>/<%= user.month %>/<%= user.year %> </p>
-    </div>
-
-
 </main>
 
 </body>

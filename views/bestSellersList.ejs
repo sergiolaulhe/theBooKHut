@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head', { title: 'Best Sellers' }) %>
+
+<body>
+    <!-- Header -->
+    <%- include ('partials/header') %>
+    <!-- Header -->
+    
+    <div>
+        <h1>Best Sellers:</h1>
+    </div>
+
+    <ul>
+        <% for( let i = 0; i < books.length; i++ ) { %>
+        <li>
+            <a href="/bestsellers/<%= books[i].id %>"><%= books[i].title %></a>
+        </li>
+        <% } %>
+
+    </ul>
+
+    <% books.forEach( books => { %>
+					
+        <%- include('partials/product',{ books }) %>
+        
+    <% }) %>
+
+
+
+ <!-- footer -->
+ <%- include('partials/footer') %>
+ <!-- /footer -->
+</body>
+
+</html>

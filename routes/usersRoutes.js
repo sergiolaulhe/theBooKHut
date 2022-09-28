@@ -40,13 +40,23 @@ router.post('/register', logDBMiddleware, validateRegisterForm, usersController.
 router.get('/login', guestMiddleware,usersController.login);
 router.post('/login', logDBMiddleware, validateLoginForm, usersController.loginProcess);
 
+//***** User Logout *****//
+
+router.get('/logout/',usersController.logout);
+
 //***** User Profile *****//
 
 router.get('/profile', authMiddleware,usersController.profile);
 
-//***** User Logout *****//
+//***** User Profile Update *****//
 
-router.get('/logout/',usersController.logout);
+router.post('/profileUpdate', usersController.update);
+
+//***** User Profile Delete *****//
+
+router.post('/profileDelete', usersController.delete);
+
+
 
 
 module.exports = router;

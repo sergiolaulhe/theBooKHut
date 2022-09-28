@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head', { title: 'Todos los productos' }) %>
+
+<body>
+    <!-- Header -->
+    <%- include ('partials/header') %>
+    <!-- Header -->
+    
+    <div>
+        <h2>Listado de productos:</h2>
+    </div>
+    <ul>
+        <% for (let i = 0; i < books.length; i++) { %>
+            <li>
+                <a href="/products/<%= books[i].id">
+                    <% if (books[i].author) { %> 
+                    <%= book[i].title %> - <%= book[i].author.name  %>
+                    <% } %>
+                </a>
+            </li>
+        <% } %>
+    </ul>
+
+
+
+    <!-- footer -->
+	<%- include('partials/footer') %>
+	<!-- /footer -->
+</body>
+</html>

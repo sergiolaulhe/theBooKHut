@@ -1,14 +1,16 @@
-<a href="/products/detail/<%= products.id%>">
+<a href="/products/detail/<%= book.id%>">
     <article class="book-item">
         <div class="item-img">    
-            <img class="book-image" src="/images/products/<%= products.image ? products.image : 'default.jpeg' %>" alt="book-image">
+            <img class="book-image" src="/images/products/<%= book.image ? book.image : 'default.jpeg' %>" alt="book-image">
         </div>
         <div class="item-info">
-            <h3><%= products.title %></h3>
-            <p><%= products.author %></p>
+            <h3><%= book.title %></h3>
+            <% if (book.author) { %>
+            <p><%= books .author.name %></p>
+            <% } %>
         </div>
         <div class="item-price">
-            <p>$<%= products.price %></p>
+            <p>$<%= book.price %></p>
         </div>
     </article>
 </a>

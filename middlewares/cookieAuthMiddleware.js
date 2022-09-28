@@ -1,5 +1,5 @@
 function cookieAuthMiddleware (req, res, next) {
-    next();
+    
     if (req.cookies.recuerdame != undefined && req.session.usuarioLogueado == undefined) {
         let usersJSON = fs.readFileSync('users.json', { enconding: 'utf-8' })
             let users;
@@ -18,6 +18,7 @@ function cookieAuthMiddleware (req, res, next) {
             }
             req.session.usuarioLogueado = usuarioALoguearse;
     }
+    next();
 }
     
         

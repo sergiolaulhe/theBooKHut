@@ -3,32 +3,38 @@
 
 <!--Head-->
 
-<%- include('partials/head.ejs', { title: 'Editando: ' + <%= productEdit.name %> }) %>
+<%- include('partials/head.ejs', { title: 'Editando: ' + <%= book.title %> }) %>
 
 <!--Body-->
 
 <body>
     <main>
-        <h3>Estas editando: <i>value="<%= productEdit.name %></i></h3>
-        <form action="/products/edit/<%= productEdit.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+        <div>
+            <h3>Estas editando: <%= book.title %></h3>
+        </div>
+        
+        <form action="/products/update/<%= book.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
             <div>
                 <div>
-                    <label for="title">Titulo del libro</label>
+                    <label for="title">Título del libro</label>
                 </div>
-                <input type="text" id="title" name="title" placeholder="Ej: Cien Años de Soledad" value="<%= productEdit.title %>">
+                <input type="text" id="title" name="title" placeholder="Ej: Cien Años de Soledad" value="<%= book.title %>">
             </div>
+
             <div>
                 <div>
                     <label for="author">Autor</label>
                 </div>
-                <input type="text" id="author" name="author" placeholder="Ej: William Shakespierre" value="<%= productEdit.author %>">
+                <input type="text" id="author" name="author" placeholder="Ej: William Shakespierre" value="<%= book.author %>">
             </div>
+
             <div>
                 <div>
                     <label for="price">Precio</label>
                 </div>
-                <input type="text" id="price" name="price" placeholder="Ej: 2000" value="<%= productEdit.price %>">
+                <input type="text" id="price" name="price" placeholder="Ej: 2000" value="<%= book.price %>">
             </div>
+
             <div>
                 <button type="submit">
                     <div>

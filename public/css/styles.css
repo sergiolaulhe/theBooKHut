@@ -167,30 +167,34 @@ li:hover {
 
 }
 
-/***** Suscription *****/
+/***** Subscription *****/
 
-.suscription-top {
+.main-mail-subscription {
     font-size: 1.4rem;
-    display: block;
+    display: flex;
+    
+    justify-content: center;
+    padding: 10px;
     color: #333;
 }
 
-.mail-suscription-section {
-    background: #fff;
-    padding: 0.5rem 1rem;
+.main-subscription-container {
+    max-width: 450px;
     width: 100%;
     text-align: center;
-    margin: 0.5rem 0 0.2rem 0;
 }
 
-.suscription-text {
-    display: block;
+.main-mail-subscription-gap {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.envelope-container { 
     text-align: center;
-    padding: 1.5rem;
-    background: white;
 }
 
-.suscription-text i {
+.envelope-container i {
     font-size: 65px;
 }
 .suscription-form {
@@ -252,18 +256,14 @@ li:hover {
 
 }
 
-/************* Footer **************/
-footer {
-    font-weight: 200;
-    text-align: center;
-}
+/************* Footer **************/ 
 
 .footer-wrap {
+    text-align: center;
+    font-weight: 200;
     background-color: #03364F;
-    color: white;
+    color: #D0D3D4;
     font-size: 1.4rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
     list-style: none;
 }
 
@@ -288,14 +288,14 @@ footer {
 
 /************* Login **************/
 
-.main-login {
+.main-form {
     display: flex;
     flex-direction: column;
     height: 100vh;
     overflow-x: hidden;
 }
 
-.main-login-container {
+.main-form-container {
     flex: 3 1 0%;
     display: flex;
     -webkit-box-pack: center;
@@ -303,12 +303,12 @@ footer {
     padding: 10px;
 }
 
-.main-login-box {
+.main-box {
     max-width: 450px;
     width: 100%;
 }
 
-.main-login-gap {
+.main-form-gap {
     display: flex;
     flex-direction: column;
     row-gap: 10px;
@@ -375,7 +375,7 @@ input {
     text-decoration: none;
 }
 
-.login-button-section {
+.button-section {
     margin-top: 16px;
 }
 
@@ -450,6 +450,9 @@ input {
     display: block;
 }
 
+/************* Login **************/
+
+
 
 /************* Register **************/
 
@@ -502,9 +505,7 @@ input {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-
 }
-
 
 .hide-on-mobile {
     display: block;
@@ -530,9 +531,13 @@ input {
     display: none;
 }
 
+/***** Footer *****/
 
-
+.footer-content-left {
+    text-align: left;
+    padding: 0 1.5rem;
 }
+
 
 @media (min-width: 768px){
 
@@ -545,4 +550,4 @@ input {
 @media (min-width: 1279px){
 
 }
-}
+}}

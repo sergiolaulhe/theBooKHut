@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head', { title: 'Nuevos lanzamientos' }) %>
+
+<body>
+    <!-- Header -->
+    <%- include ('partials/header') %>
+    <!-- Header -->
+    
+    <div>
+        <h1>Nuevos lanzamientos:</h1>
+    </div>
+
+    <% books.forEach( books => { %>
+					
+        <%- include('partials/product',{ books }) %>
+        
+    <% }) %>
+
+
+
+ <!-- footer -->
+ <%- include('partials/footer') %>
+ <!-- /footer -->
+</body>
+
+</html>

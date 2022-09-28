@@ -8,13 +8,23 @@ const { body } = require('express-validator');
 
 const uploadFile = require('../middlewares/multerMiddleware');
 
+// ***** Field Validations ***** //
+
+const validateProductCreateForm = [
+    body('title').notEmpty().withMessage('Debes completar este campo'),
+    body('author').notEmpty().withMessage('Debes completar este campo'),
+    body('price').notEmpty().withMessage('Debes completar este campo'),
+    body('stock').notEmpty().withMessage('Debes completar este campo')
+];
+
+
 //***** Controller Require *****//
 
 const productsController = require('../controllers/productsController');
 
 //***** Get all products *****//
 
-router.get('/', productsController.index);
+router.get('/', productsController.list);
 
 //***** Get product detail *****//
 
@@ -22,16 +32,16 @@ router.get('/detail/:id', productsController.detail);
 
 //***** Create one product *****//
 
-router.get('/create', productsController.create);
-router.post('/', uploadFile.single('image'), productsController.store);
+router.get('/add', productsController.add);
+router.post('/create', uploadFile.single('image'), validateProductCreateForm, productsController.create);
 
 //***** Edit one product *****//
 
 router.get('/edit/:id', productsController.edit);
-router.put('/edit/:id', productsController.update);
+router.put('/update/:id', productsController.update);
 
 //***** Delete one product *****//
-router.delete('/delete/:id', productsController.destroy);
+router.delete('/delete/:id', productsController.delete);
 
 
 module.exports = router;

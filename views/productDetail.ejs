@@ -3,7 +3,7 @@
 
 <!--Head-->
 
-<%- include('partials/head', { title: product.title }) %>
+<%- include('partials/head', { title: book.title }) %>
 
 <!--Body-->
 
@@ -19,17 +19,17 @@
 
 <section class="">
     <div class="">
-            <h2 class="products-title"><%= product.title %></h2>
+            <h2 class="products-title">Titulo: <%= book.title %></h2>
     </div>
     <div>
-        <p>Por <%= product.author %></p>
+        <p>Autor: <%= book.author %></p>
     </div>
     <div class="product-detail-img">
-        <img src="/images/products/<%= product.image %>" alt="">
+        <img src="/images/products/<%= book.image %>" alt="">
     </div>
     <hr class="separator">
     <div>
-        <p>AR$<%= product.price %></p>
+        <p>AR$<%= book.price %></p>
     </div>
     <form action="#">
         <button type="submit">Añadir a la cesta</button>
@@ -42,10 +42,10 @@
         <h3>Detalle del producto:</h3>
     </div>        
     </div>
-        <p>Titulo: <%= product.title %></p>
+        <p>Titulo: <%= book.title %></p>
     </div>
     <div>
-        <p class="product-detail-description">Descripción: <%= product.description %></p>
+        <p class="product-detail-description">Descripción: <%= book.description %></p>
     </div>
     <div>
         <p>Editorial: </p>
@@ -68,14 +68,20 @@
     
 </div>
 
-<a href="/products/edit/<%= product.id %>" class="action-button edit">EDITAR PRODUCTO</a>
-<form action="/products/edit/<%= product.id %>?_method=PUT" method="POST" style="display: inline-flex">
-    <button type="submit" class="action-button delete">EDITAR</button>
+<form action="/products/edit/<%= book.id %>" method="GET">
+    <div>
+        <button type="submit">EDITAR LIBRO</button>
+    </div>
 </form>
-			<form action="/products/delete/<%= product.id %>?_method=DELETE" method="POST" style="display: inline-flex">
-				<button type="submit" class="action-button delete">ELIMINAR</button>
-			</form>
 
+<form action="products/delete/<%= book.id %>?_method=DELETE" method="POST">
+    <div>
+        <button type="submit">ELIMINAR LIBRO</button>
+    </div>
+</form>
+<!-- <a href="/products/edit/<%= book.id %>"><button>EDITAR</button></a> -->
+
+<!-- <a href="/products/delete/<%= book.id %>"><button>ELIMINAR</button></a> -->
 
 </main>
 

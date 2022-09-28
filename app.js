@@ -51,9 +51,7 @@ app.use(logMiddleware);
 app.use(cookieAuthMiddleware);
 app.use(userLoggedMiddleware);
 
-// Levantar servidor con Express
 
-app.listen(3100, () => console.log('Servidor en linea en puerto 3100'));
 
 
 
@@ -98,5 +96,9 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
+// Levantar servidor con Express
+
+app.listen(3100, () => console.log('Servidor en linea en puerto 3100'));
+
 // ************ exports app - dont'touch ************
-module.exports = app;
+// module.exports = app;

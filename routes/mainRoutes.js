@@ -12,6 +12,8 @@ const controller = require('../controllers/mainController');
 router.get('/', controller.index);
 router.get('/search', controller.search);
 
+router.get('/bestsellers', controller.bestSeller);
+router.get('/newreleases', controller.new);
 
 
 

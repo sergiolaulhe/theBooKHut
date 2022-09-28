@@ -20,11 +20,11 @@
 
 <body>
 
-<!--Header-->
+<!-- Header-->
 
 <%- include ('partials/header') %>
 
-<!--Main-->
+<!--Main -->
 
 <main>
 
@@ -54,12 +54,11 @@
                     <p>$<%= products.price %></p>
                 </div>
             </article>
-        </a>
-            <% } %>
-        <% }) %>
+            </a>
+                <% } %>
+            <% }) %>
         
-        
-    </div>
+        </div>
     </section>
 
     <section class="product-section">
@@ -84,41 +83,23 @@
                     <p>$<%= products.price %></p>
                 </div>
             </article>
-        </a>
-        <% } %>
-    <% }) %>
-        
-        
-        </div>
-    </section>
-
-    <section class="product-section">
-        <header>
-            <h2>En oferta</h2>
-        </header>
-
-        <% products.forEach (products => { %>
-            <% if (products.category == 'on-sale') { %>
-
-                <%- include ('partials/product') %>
-
+            </a>
             <% } %>
         <% }) %>
-
         
-        <div class="products-container">
-
         </div>
     </section>
+
+    
 
     <hr class="separator">
 
-<!-- Suscripciones-->
+<!-- Subscription-->
 
-    <div class="suscription-top">
-        <section class="mail-suscription-section">
-            <div class="suscription-widget">
-                <div class="suscription-text">
+    <div class="main-mail-subscription">
+        <section class="main-subscription-container">
+            <div class="main-mail-subscription-gap">
+                <div class="envelope-container">
                     <i class="fa-solid fa-envelope-open-text"></i>
                     <p>Recibe nuestras ofertas y novedades</p>
                     <div class="suscription-form">
@@ -143,10 +124,10 @@
     <div class="footer-social-media">
         <h3>Siguenos</h3>
         <ul class="footer-social-media-list">
-            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-            <li><a href="#"></a><i class="fa-brands fa-square-facebook"></i></li>
-            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-            <li><a href="#"><i class="fa-brands fa-pinterest"></i></a></li>
+            <li><a href="https://twitter.com/?lang=es"><i class="fa-brands fa-twitter"></i></a></li>
+            <li><a href="https://www.facebook.com/"><i class="fa-brands fa-square-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="https://ar.pinterest.com/"><i class="fa-brands fa-pinterest"></i></a></li>
         </ul>
 
     </div>

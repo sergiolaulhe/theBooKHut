@@ -3,71 +3,153 @@
 
 <!--Head-->
 
-<%- include('partials/head.ejs', { title: 'Crear' }) %>
+<%- include('partials/head.ejs', { title: 'Agregar' }) %>
 
 <!--Body-->
 
-<body>
-    <main>
-        <h3>Agregar un nuevo producto</h3>
-        <form action="/products" method="POST" enctype="multipart/form-data">
-            <div>
-                <div>
-                    <label for="title">Titulo del libro</label>
-                </div>
-                <input type="text" name="title" placeholder="Titulo del libro ">
-            </div>
-            <div>
-                <div>
-                    <label for="author">Autor del libro</label>
-                </div>
-                <input type="text" name="author" placeholder="Ej: William Shakespierre">
-            </div>
-            <div>
-                <div>
-                    <label for="price">Precio</label>
-                </div>
-                <input type="text" name="price" placeholder="Ej: 1000">
-            </div>
-            <div class="">
-                <div>
-                <label for="category" class="form-label">Categoría:</label>
-                </div>
-                <select name="category" id="category" class="form-input">
-                    <option value="">Elegí</option>
-                    <option value="on-sale">En oferta</option>
-                    <option value="visited">Últimos agregados</option>
-                    <option value="new-release">Best Seller</option>
-                </select>
-            </div>
-            <div>
-                <div>
-                    <label for="description">Descripción</label>
-                </div>
-                <textarea name="description" id="description" cols="30" rows="10"></textarea>
-            </div>
-            <div>
-                <div>
-                    <label for="publisher">Editorial</label>
-                </div>
-                <input type="text" name="publisher" placeholder="Ej: Planeta">
-            </div>
-            <div>
-                <div>
-                    <label for="image">Portada del libro</label>
-                </div>
-                <input type="file" name="image" id="image" accept=".jpg, .jpeg, .tiff">
-            </div>
+<!--Header-->
 
-            
-            <div>    
-                <button type="submit">
-                    <div>
-                        <p>CARGAR</p>
+<%- include('partials/header.ejs') %>
+
+<!--Main-->
+
+<body>
+    <main class="main-form">
+        <div class="main-form-container">
+            <div class="main-box">
+                <div class="main-form-gap">
+
+                    <div class="section-title">
+                        <h2>Agregar un nuevo producto</h2>
                     </div>
-                </button>
+
+                    <div class="form-container">
+
+                        <form action="/products" method="POST" enctype="multipart/form-data" class="form">
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="title">Titulo del libro</label>
+                                </div>
+                                <input type="text" id="title" name="title" placeholder="Titulo del libro " class="form-control <%= locals.errors && errors.title ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.title : null %>">
+                                <% if (locals.errors && errors.title) { %>
+                                    <div>
+                                        <%= errors.title.msg %>
+                                    </div>
+                                <% } %>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label for="author">Autor del libro</label>
+                                </div>
+                                <input type="text" name="author" placeholder="Ej: William Shakespierre" class="form-control <%= locals.errors && errors.author ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.author : null %>">
+                                <% if (locals.errors && errors.author) { %>
+                                    <div>
+                                        <%= errors.author.msg %>
+                                    </div>
+                                <% } %>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="price">Precio</label>
+                                </div>
+                                <input type="text" name="price" placeholder="Ej: 1000" class="form-control <%= locals.errors && errors.price ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.price : null %>">
+                                <% if (locals.errors && errors.price) { %>
+                                    <div>
+                                        <%= errors.price.msg %>
+                                    </div>
+                                <% } %>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="category">Categoría:</label>
+                                </div>
+                                <select name="category" id="category" class="form-input">
+                                    <option value="">Elegí</option>
+                                    <option value="1">Artes</option>
+                                    <option value="2">Ciencias</option>
+                                    <option value="3">Cocina</option>
+                                    <option value="4">Comics</option>
+                                    <option value="5">Computación</option>
+                                    <option value="6">Deportes</option>
+                                    <option value="7">Economia</option>
+                                    <option value="8">Ficción</option>
+                                    <option value="9">Finanzas</option>
+                                    <option value="10">Infantiles</option>
+                                    <option value="11">Informatica</option>
+                                    <option value="12">Literatura</option>
+                                    <option value="13">Medicina</option>
+                                    <option value="14">Ocio</option>
+                                    <option value="15">Tecnologia</option>
+                                    <option value="16">Elegí</option>
+                                    <option value="17">Artes</option>
+                                    <option value="18">Ciencias</option>
+                                    <option value="19">Viajes y turismo</option>
+                                </select>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="description">Descripción</label>
+                                </div>
+                                <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="publisher">Editorial</label>
+                                </div>
+                                <input type="text" name="publisher" placeholder="Ej: Planeta">
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="stock">Cantidad</label>
+                                </div>
+                                <input type="text" name="stock" placeholder="Cantidad"class="form-control <%= locals.errors && errors.stock ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.stock : null %>">
+                                <% if (locals.errors && errors.stock) { %>
+                                    <div>
+                                        <%= errors.stock.msg %>
+                                    </div>
+                                <% } %>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="classification">Clasificación:</label>
+                                </div>
+                                <select name="classification" id="classification" class="form-input">
+                                    <option value="">Elegí</option>
+                                    <option value="Best-Seller">Best Sellers</option>
+                                    <option value="new-release">Nuevos lanzamientos</option>
+                                    <option value="recomended">Recomendado</option>
+                                </select>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="image">Portada del libro</label>
+                                </div>
+                                <input type="file" name="image" id="image" accept=".jpg, .jpeg, .tiff">
+                            </div>
+            
+                            <div class="submit-button">    
+                                <button type="submit" class="button">
+                                    <div>
+                                        <p>CARGAR</p>
+                                    </div>
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
             </div>
-        </form>
+        </div>
     </main>
     
 </body>

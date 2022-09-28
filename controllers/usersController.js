@@ -1,20 +1,21 @@
-// const fs = require('fs');
-// const path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-// const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
-// const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
+const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const { validationResult } = require('express-validator');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
-const User = require('../database/models/User')
+const User = require('../User')
 
+const db = require('../database/models/');
 
 const userController = {
 
     //***** User Login *****//
 
-    login: (req, res) => {;
+    login: (req, res) => {
         res.render('login');
         
     },
@@ -50,12 +51,32 @@ const userController = {
         });
     },
 
-    //***** User Registration *****//
+//***** User Logout *****//
+
+    logout: (req, res) => {
+        res.clearCookie('userEmail');
+        req.session.destroy();
+        return res.redirect('/');
+    },
+
+//***** User Registration *****//
     
     register: (req, res) => {
         res.render('register-create-form');
         
     },
+
+    // create: (req, res) => {
+    //     db.Users.create({
+    //         name: req.body.name,
+    //         email: req.body.email,
+    //         password: req.body.password,
+    //         user_name: req.body.userName,
+    //         birth_date: req.body.birthDate,
+    //         address: req.body.address,
+    //         phone: req.body.phone
+    //     })
+    // },
 
     create: (req, res) => {
         
@@ -101,13 +122,33 @@ const userController = {
 
     },
 
-    //***** User Logout *****//
+//***** User Profile Update *****//
 
-    logout: (req, res) => {
-        res.clearCookie('userEmail');
-        req.session.destroy();
-        return res.redirect('/');
+    update: (req, res) => {
+        db.Users.update({
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password,
+    //      user_name: req.body.userName,
+    //      birth_date: req.body.birthDate,
+    //      address: req.body.address,
+    //      phone: req.body.phone
+
+        },
+        {
+            where: {id : req.params.id}
+        })
+    },
+
+//***** User Profile Delete *****//
+
+    delete: (req, res) => {
+        db.Users.destroy({
+            where: { id: req.params.id }
+        })
     }
+
+    
 
 };
 
