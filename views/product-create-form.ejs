@@ -3,7 +3,7 @@
 
 <!--Head-->
 
-<%- include('partials/head.ejs', { title: 'Agregar' }) %>
+<%- include('partials/head', { title: 'Agregando' }) %>
 
 <!--Head-->
 
@@ -13,12 +13,11 @@
 
 <!--Header-->
 
-    <%- include('partials/header.ejs') %>
+    <%- include('partials/header') %>
 
 <!--Header-->
 
 <!--Main-->
-
 
     <main class="main-form">
         <div class="main-form-container">
@@ -26,115 +25,102 @@
                 <div class="main-form-gap">
 
                     <div class="section-title">
-                        <h2>Agregar un nuevo producto</h2>
+                        <h2>Para agregar un nuevo libro completa los siguientes campos:</h2>
                     </div>
 
-                    <div class="form-container">
-
-                        <form action="/products" method="POST" enctype="multipart/form-data" class="form">
+                    <section class="form-container">
+                        <form action="/products/create" method="POST" enctype="multipart/form-data" class="form">
 
                             <div class="group-form">
                                 <div class="group-label">
-                                    <label class="label" for="title">Titulo del libro</label>
+                                    <label class="label" for="title">Título del libro</label>
                                 </div>
-                                <input type="text" id="title" name="title" placeholder="Titulo del libro " class="form-control <%= locals.errors && errors.title ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.title : null %>">
-                                <% if (locals.errors && errors.title) { %>
-                                    <div>
-                                        <%= errors.title.msg %>
-                                    </div>
-                                <% } %>
+                                <input type="text" id="title" name="title" placeholder="Ingresa el titulo" class="form-control <%= locals.errors && errors.title ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.title : null %>" required>
                             </div>
 
                             <div class="group-form">
                                 <div class="group-label">
-                                    <label for="author">Autor del libro</label>
+                                    <label class="label" for="author_id">Autor</label>
                                 </div>
-                                <select name="author_id" id="">
-                                    <option value="" disabled selected>- seleccionar autor -</option>
+                                <select name="author_id" id="author_id" required>
+                                    <option value="" disabled selected>- elige un autor -</option>
                                     <% allAuthors.forEach(author => { %>
-                                    <option value="<%= author.id %>"><%= author.first_name %> + <%= author.last_name %></option>
-                                    <% }) %> 
+                                    <option value="<%= author.id %>"><%= author.first_name %> <%= author.last_name %></option>
+                                    <% }); %>
                                 </select>
-                                
-
-                                <input type="text" name="author" placeholder="Ej: William Shakespierre" class="form-control <%= locals.errors && errors.author ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.author : null %>">
-                                <% if (locals.errors && errors.author) { %>
-                                    <div>
-                                        <%= errors.author.msg %>
-                                    </div>
-                                <% } %>
                             </div>
 
                             <div class="group-form">
                                 <div class="group-label">
-                                    <label class="label" for="price">Precio</label>
+                                    <label class="label" for="category_id">Categoría</label>
                                 </div>
-                                <input type="text" name="price" placeholder="Ej: 1000" class="form-control <%= locals.errors && errors.price ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.price : null %>">
-                                <% if (locals.errors && errors.price) { %>
-                                    <div>
-                                        <%= errors.price.msg %>
-                                    </div>
-                                <% } %>
-                            </div>
-
-                            <div class="group-form">
-                                <div class="group-label">
-                                    <label class="label" for="category">Categoría:</label>
-                                </div>
-                                <select name="category_id" id="">
-                                    <option value="" disabled selected>- seleccionar categoría -</option>
+                                <select name="category_id" id="category_id" required>
+                                    <option value="" disabled selected>- selecciona un autor -</option>
                                     <% allCategorys.forEach(category => { %>
                                     <option value="<%= category.id %>"><%= category.name %></option>
-                                    <% }) %> 
+                                    <% }); %>
                                 </select>
-                                
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="title">Precio</label>
+                                </div>
+                                <input type="number" id="price" name="price" placeholder="Ingresa el precio" class="form-control <%= locals.price && errors.price ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.price : null %>">
                             </div>
 
                             <div class="group-form">
                                 <div class="group-label">
                                     <label class="label" for="description">Descripción</label>
                                 </div>
-                                <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                                <textarea name="description" id="description" cols="86" rows="10" placeholder="Agregar escripción" value=""></textarea>
                             </div>
 
                             <div class="group-form">
                                 <div class="group-label">
-                                    <label class="label" for="publisher">Editorial</label>
+                                    <label class="label" for="publisher_id">Editorial</label>
                                 </div>
-                                <input type="text" name="publisher" placeholder="Ej: Planeta">
-                            </div>
-
-                            <div class="group-form">
-                                <div class="group-label">
-                                    <label class="label" for="stock">Cantidad</label>
-                                </div>
-                                <input type="text" name="stock" placeholder="Cantidad"class="form-control <%= locals.errors && errors.stock ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.stock : null %>">
-                                <% if (locals.errors && errors.stock) { %>
-                                    <div>
-                                        <%= errors.stock.msg %>
-                                    </div>
-                                <% } %>
-                            </div>
-
-                            <div class="group-form">
-                                <div class="group-label">
-                                    <label class="label" for="classification">Clasificación:</label>
-                                </div>
-                                <select name="classification" id="classification" class="form-input">
-                                    <option value="">Elegí</option>
-                                    <option value="Best-Seller">Best Sellers</option>
-                                    <option value="new-release">Nuevos lanzamientos</option>
-                                    <option value="recomended">Recomendado</option>
+                                <select name="publisher_id" id="publisher_id" required>
+                                    <option value="" disabled selected>- selecciona una editorial -</option>
+                                    <% allPublishers.forEach(publisher => { %>
+                                    <option value="<%= publisher.id %>"><%= publisher.name %></option>
+                                    <% }); %>
                                 </select>
                             </div>
 
                             <div class="group-form">
                                 <div class="group-label">
-                                    <label class="label" for="image">Portada del libro</label>
+                                    <label class="label" for="classification_id">Clasificación</label>
                                 </div>
-                                <input type="file" name="image" id="image" accept=".jpg, .jpeg, .tiff">
+                                <select name="classification_id" id="classification_id" required>
+                                    <option value="" disabled selected>- selecciona la clasificación -</option>
+                                    <% allClassifications.forEach(classification => { %>
+                                    <option value="<%= classification.id %>"><%= classification.name %></option>
+                                    <% }); %>
+                                </select>
                             </div>
-            
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="release_date">Fecha de publicación</label>
+                                </div>
+                                <input type="date" id="release_date" name="release_date" class="form-control <%= locals.price && errors.price ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.price : null %>">
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="stock">Stock</label>
+                                </div>
+                                <input type="number" id="stock" name="stock" placeholder="Ingresa el stock" class="form-control <%= locals.price && errors.price ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.price : null %>">
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="title">Imagén de la portada</label>
+                                </div>
+                                <input type="file" name="image" id="image" accept=".jpg, .jpeg, .tiff" value="">
+                            </div>
+
                             <div class="submit-button">    
                                 <button type="submit" class="button">
                                     <div>
@@ -144,13 +130,23 @@
                             </div>
 
                         </form>
-                    </div>
+                    </section>
 
                 </div>
             </div>
         </div>
-    </main>
-    
-</body>
 
+<!--Main-->
+
+    </main>
+
+<!--Footer-->
+
+    <%- include ('partials/footer') %>
+
+<!--Footer-->
+
+<!--Body-->
+
+</body>
 </html>

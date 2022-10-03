@@ -8,7 +8,8 @@ const { validationResult } = require('express-validator');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const db = require('../database/models/');
-const Category = require('../database/models/Category');
+
+const sequelize = db.sequelize;
 
 
 const productsController = {
@@ -51,44 +52,36 @@ const productsController = {
 
         Promise.all([allAuthors, allCategorys, allPublishers, allClassifications])
         .then(([allAuthors, allCategorys, allPublishers, allClassifications]) => {
-            res.render('product-create-form1', { allAuthors:allAuthors, allCategorys:allCategorys, allPublishers:allPublishers, allClassifications:allClassifications})
+            res.render('product-create-form', { allAuthors:allAuthors, allCategorys:allCategorys, allPublishers:allPublishers, allClassifications:allClassifications})
         });
 
-// opcion 3
-        // db.Book.findAll({
-        //     include: [{ association: 'author'}, { association: 'publisher'}],
-        // })
-        //     .then(function(books) {
-        //         console.log(books);
-        //         res.render('books-create-form', { books })
-        //     })
-
-        
     },
 
 // ***** Create - Method to store ***** //
 
     create: (req, res) => {
-        let errors = validationResult(req);
+        // let errors = validationResult(req);
         
-        if(errors.isEmpty()){
+        // if(errors.isEmpty()){
             db.Book.create({
                 title: req.body.title,
+                author_id: req.body.author_id,
+                category_id: req.body.category_id,
                 price: req.body.price,
                 description: req.body.description,
+                publisher_id: req.body.publisher_id,
+                classification_id: req.body.classification_id,
                 stock: req.body.stock,
-                image: req.file.filename,
-                // author_id: req.body.author,
-                // category_id: req.body.category,
-                // publisher_id: req.body.publisher,
-                // status_id: req.body.status
+                release_date: req.body.release_date,
+                image: req.file.filename
+                
             }).then(function(data){
                 return res.redirect('/products');
 
             })
-        }else{
-            res.render('product-create-form', { errors:errors.mapped(), old: req.body })
-        }
+        // }else{
+        //     res.render('product-create-form', { errors:errors.mapped(), old: req.body })
+        // }
         
     },
     
@@ -134,8 +127,8 @@ const productsController = {
             description: req.body.description,
             publisher_id: req.body.publisher_id,
             classification_id: req.body.classification_id,
-            release_date: req.body.release_date,
             stock: req.body.stock,
+            release_date: req.body.release_date,
             image: req.file.filename
     
         }, {
@@ -159,21 +152,23 @@ const productsController = {
 // ***** Delete - Delete one product from DB ***** //
 
     delete: (req, res) => {
+        db.Book.findByPk(req.params.id)
+        .then((Book) => {
+            console.log(Book);
+            res.render('product-delete-form', { Book: Book });
+        });
+    },
+
+    destroy: (req, res) => {
         console.log('Eliminar');
         db.Book.destroy({
             where: {
                 id: req.params.id
             }
-        }).then(function(){
+        }).then(function(book){
+            console.log(book);
             res.redirect('/products')
         })
-
-        // const idProduct = req.params.id;
-        // console.log({idProduct})
-        // const productsFilter = products.filter( elemento => elemento.id != idProduct )
-        // const data = JSON.stringify(productsFilter, null, ' ')
-        // fs.writeFileSync(productsFilePath, data);
-        // res.redirect('/');
     }
 }
 
