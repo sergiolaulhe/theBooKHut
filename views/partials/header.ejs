@@ -10,18 +10,18 @@
 
             <ul class="right-user-navbar">
                 <li><i class="fa-solid fa-user"></i></li>
-                <a href="users/profile"><li>Hola! <%= locals.userLogged.name %></li></a>
+                <a href="/users/profile"><li>Hola! <%= locals.userLogged.name %></li></a>
                 <li> / </li>
-                <a href="users/logout"><li>Logout</li></a>
+                <a href="/users/logout"><li>Logout</li></a>
             </ul>
 
             <% } else { %>
 
             <ul class="right-user-navbar">
                 <li><i class="fa-solid fa-user"></i></li>
-                <a href="users/login"><li>Iniciar sesion</li></a>
+                <a href="/users/login"><li>Iniciar sesion</li></a>
                 <li> / </li>
-                <a href="users/register"><li>Crear cuenta</li></a>
+                <a href="/users/register"><li>Crear cuenta</li></a>
             </ul>
 
             <% } %>

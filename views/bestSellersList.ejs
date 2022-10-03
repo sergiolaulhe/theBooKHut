@@ -1,37 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!--Head-->
+
 <%- include('partials/head', { title: 'Best Sellers' }) %>
 
+<!--Head-->
+
+<!--Body-->
+
 <body>
-    <!-- Header -->
+
+<!-- Header -->
+
     <%- include ('partials/header') %>
-    <!-- Header -->
+
+<!-- Header -->
+
+<!--Main-->
+
+    <main>
+
+<!-- Product list -->
     
-    <div>
-        <h1>Best Sellers:</h1>
-    </div>
+        <div>
+            <h2>Best Sellers:</h2>
+        </div>
 
-    <ul>
-        <% for( let i = 0; i < books.length; i++ ) { %>
-        <li>
-            <a href="/bestsellers/<%= books[i].id %>"><%= books[i].title %></a>
-        </li>
-        <% } %>
-
-    </ul>
-
-    <% books.forEach( books => { %>
+        <% books.forEach( book => { %>
 					
-        <%- include('partials/product',{ books }) %>
+            <a href="/products/detail/<%= book.id%>">
+                <article class="book-item">
+                    <div class="item-img">    
+                        <img class="book-image" src="/images/products/<%= book.image ? book.image : 'default.jpeg' %>" alt="book-image">
+                    </div>
+                    <div class="item-info">
+                        <h3><%= book.title %></h3>
+                        <% if (book.author) { %>
+                            <p><%= book.author.name %></p>
+                        <% } %>
+                    </div>
+                    <div class="item-price">
+                        <p>$<%= book.price %></p>
+                    </div>
+                    <form action="#">
+                        <button type="submit">Añadir a la cesta</button>
+                    </form>
+                </article>
+            </a>
         
-    <% }) %>
+        <% }) %>
 
 
 
- <!-- footer -->
- <%- include('partials/footer') %>
- <!-- /footer -->
+<!-- Product list -->
+
+<!-- footer -->
+
+	<%- include('partials/footer') %>
+
+<!-- /footer -->
+
 </body>
+
+<!--Body-->
 
 </html>

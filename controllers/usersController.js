@@ -13,7 +13,7 @@ const db = require('../database/models/');
 
 const userController = {
 
-    //***** User Login *****//
+//***** User Login *****//
 
     login: (req, res) => {
         res.render('login');

@@ -5,21 +5,15 @@
 
 <%- include('partials/head.ejs', { title: 'Agregar' }) %>
 
-<!--Head-->
-
 <!--Body-->
 
-<body>
-
 <!--Header-->
 
-    <%- include('partials/header.ejs') %>
-
-<!--Header-->
+<%- include('partials/header.ejs') %>
 
 <!--Main-->
 
-
+<body>
     <main class="main-form">
         <div class="main-form-container">
             <div class="main-box">
@@ -49,10 +43,10 @@
                                 <div class="group-label">
                                     <label for="author">Autor del libro</label>
                                 </div>
-                                <select name="author_id" id="">
+                                <select name="author" id="">
                                     <option value="" disabled selected>- seleccionar autor -</option>
-                                    <% allAuthors.forEach(author => { %>
-                                    <option value="<%= author.id %>"><%= author.first_name %> + <%= author.last_name %></option>
+                                    <% for (i = 0; i < allAuthors.length; i++){ %>
+                                    <option value="<%= allAuthors[i].id %>"><%= allAuthors[i].first_name %> <%= allAuthors[i].last_name %></option>
                                     <% }) %> 
                                 </select>
                                 
@@ -81,10 +75,10 @@
                                 <div class="group-label">
                                     <label class="label" for="category">Categoría:</label>
                                 </div>
-                                <select name="category_id" id="">
-                                    <option value="" disabled selected>- seleccionar categoría -</option>
-                                    <% allCategorys.forEach(category => { %>
-                                    <option value="<%= category.id %>"><%= category.name %></option>
+                                <select name="category" id="">
+                                    <option value="" disabled selected>- seleccionar autor -</option>
+                                    <% for (i = 0; i < allCategorys.length; i++){ %>
+                                    <option value="<%= allCategorys[i].id %>"><%= allCategorys[i].name %></option>
                                     <% }) %> 
                                 </select>
                                 

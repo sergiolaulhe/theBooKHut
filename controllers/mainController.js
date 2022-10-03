@@ -9,10 +9,23 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const controller = {
+
+// ***** Home - Get all products by classification ***** //
     
     index: (req, res) => {
-        res.render( 'index', {products:products} );
+        db.Book.findAll({
+            include: [{ association: 'author'}, { association: 'classification'}],
+            order: [
+                ['title', 'ASC'],
+            ],
+        })
+            .then(function(books) {
+                res.render('index', { books })
+            })
+
     },
+
+// ***** Home - Get all products by classification ***** //
 
     //Agregar busqueda con DB!!//
 

@@ -1,6 +1,6 @@
 module.exports = (sequelize, dataTypes) => {
     
-    const alias = 'Books';
+    const alias = 'Book';
     
     const cols = {
         id: {
@@ -46,16 +46,28 @@ module.exports = (sequelize, dataTypes) => {
         timestamps: false
     };
 
-    const Books = sequelize.define(alias, cols, config);
+    const Book = sequelize.define(alias, cols, config);
 
-    Books.associate = function(models) {
-        Books.belongsTo(models.Author, {
+    Book.associate = function(models) {
+        Book.belongsTo(models.Author, {
             as: 'author',
             foreignKey: 'author_id'       
+        }),
+        Book.belongsTo(models.Category, {
+            as: 'category',
+            foreignKey: 'category_id'       
+        }),
+        Book.belongsTo(models.Classification, {
+            as: 'classification',
+            foreignKey: 'classification_id'       
+        }),
+        Book.belongsTo(models.Publisher, {
+            as: 'publisher',
+            foreignKey: 'publisher_id'       
         })
 
     }
     
 
-    return Books;
+    return Book;
 }

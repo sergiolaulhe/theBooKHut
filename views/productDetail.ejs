@@ -5,89 +5,98 @@
 
 <%- include('partials/head', { title: book.title }) %>
 
+<!--Head-->
+
 <!--Body-->
 
 <body>
 
 <!--Header-->
 
-<%- include('partials/header') %>
+    <%- include('partials/header') %>
+
+<!--Header-->
 
 <!--Main-->
-<main>
+
+    <main>
+
 <!-- Product detail -->
 
-<section class="">
-    <div class="">
-            <h2 class="products-title">Titulo: <%= book.title %></h2>
-    </div>
-    <div>
-        <p>Autor: <%= book.author %></p>
-    </div>
-    <div class="product-detail-img">
-        <img src="/images/products/<%= book.image %>" alt="">
-    </div>
-    <hr class="separator">
-    <div>
-        <p>AR$<%= book.price %></p>
-    </div>
-    <form action="#">
-        <button type="submit">Añadir a la cesta</button>
-    </form>
-</section>
+        <section class="">
+            <div class="">
+                    <h2 class="products-title">Titulo: <%= book.title %></h2>
+            </div>
+            <div>
+                <p>Autor: <%= book.author.first_name %> <%= book.author.last_name %></p>
+            </div>
+            <div class="product-detail-img">
+                <img src="/images/products/<%= book.image %>" alt="">
+            </div>
+            <hr class="separator">
+            <div>
+                <p>AR$<%= book.price %></p>
+            </div>
+            <form action="#">
+                <button type="submit">Añadir a la cesta</button>
+            </form>
+        </section>
 
 
-<section>
-    <div>
-        <h3>Detalle del producto:</h3>
-    </div>        
-    </div>
-        <p>Titulo: <%= book.title %></p>
-    </div>
-    <div>
-        <p class="product-detail-description">Descripción: <%= book.description %></p>
-    </div>
-    <div>
-        <p>Editorial: </p>
-    </div>
-    <div>
-        <p>Fecha de publicación: </p>
-    </div>
-    <div>
-        <p>Idioma: </p>
-    </div>
+        <section>
+            <div>
+                <h3>Detalle del producto:</h3>
+            </div>        
+            </div>
+                <p>Titulo: <%= book.title %></p>
+            </div>
+            <div>
+                <p class="product-detail-description">Descripción: <%= book.description %></p>
+            </div>
+            <div>
+                <p>Editorial: <%= book.publisher.name %></p>
+            </div>
+            <div>
+                <p>Fecha de publicación: <%= book.release_date %></p>
+            </div>
+            <div>
+                <p>Idioma: </p>
+            </div>
 
-</section>
+        </section>
 
 
-<div>
-    
-    <div>
-        <a href="#">Detalle de envío</a>
-    </div>
-    
-</div>
+        <div>
+            <div>
+                <a href="#">Detalle de envío</a>
+            </div>
+        </div>
 
-<form action="/products/edit/<%= book.id %>" method="GET">
-    <div>
-        <button type="submit">EDITAR LIBRO</button>
-    </div>
-</form>
+        <form action="/products/edit/<%= book.id %>" method="GET">
+            <div>
+                <button type="submit">EDITAR LIBRO</button>
+            </div>
+        </form>
 
-<form action="products/delete/<%= book.id %>?_method=DELETE" method="POST">
-    <div>
-        <button type="submit">ELIMINAR LIBRO</button>
-    </div>
-</form>
-<!-- <a href="/products/edit/<%= book.id %>"><button>EDITAR</button></a> -->
+        <form action="products/delete/<%= book.id %>?_method=DELETE" method="POST">
+            <div>
+                <button type="submit">ELIMINAR LIBRO</button>
+            </div>
+        </form>
 
-<!-- <a href="/products/delete/<%= book.id %>"><button>ELIMINAR</button></a> -->
 
-</main>
+    </main>
+
+<!--Main-->
 
 <!--Footer-->
 
-<%- include ('partials/footer') %>
+    <%- include ('partials/footer') %>
+
+<!--Footer-->
 
 </body>
+
+<!--Body-->
+
 </html>

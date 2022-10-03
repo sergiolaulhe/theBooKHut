@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Head-->
+
+<%- include('partials/head', { title: 'Agregando' }) %>
+
+<!--Head-->
+
+<!--Body-->
+
+<body>
+
+<!--Header-->
+
+    <%- include('partials/header') %>
+
+<!--Header-->
+
+<!--Main-->
+
+    <main class="main-form">
+        <div class="main-form-container">
+            <div class="main-box">
+                <div class="main-form-gap">
+
+                    <div class="section-title">
+                        <h2>Para agregar un nuevo libro completa los siguientes campos:</h2>
+                    </div>
+
+                    <section class="form-container">
+                        <form action="/products/create" method="POST" enctype="multipart/form-data" class="form">
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="title">Título del libro</label>
+                                </div>
+                                <input type="text" id="title" name="title" placeholder="Ingresa el titulo" class="form-control <%= locals.errors && errors.title ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.title : null %>">
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="author_id">Autor</label>
+                                </div>
+                                <select name="author_id" id="author_id" required>
+                                    <option value="" disabled selected>- elige un autor -</option>
+                                    <% allAuthors.forEach(author => { %>
+                                    <option value="<%= author.id %>"><%= author.first_name %> <%= author.last_name %></option>
+                                    <% }); %>
+                                </select>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="author_id">Categoría</label>
+                                </div>
+                                <select name="category_id" id="category_id" required>
+                                    <option value="" disabled selected>- selecciona un autor -</option>
+                                    <% allCategorys.forEach(category => { %>
+                                    <option value="<%= category.id %>"><%= category.name %></option>
+                                    <% }); %>
+                                </select>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="title">Precio</label>
+                                </div>
+                                <input type="number" id="price" name="price" placeholder="Ingresa el precio" class="form-control <%= locals.price && errors.price ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.price : null %>">
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="description">Descripción</label>
+                                </div>
+                                <textarea name="description" id="description" cols="86" rows="10" placeholder="Agregar escripción" value=""></textarea>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="publisher_id">Editorial</label>
+                                </div>
+                                <select name="publisher_id" id="publisher_id" required>
+                                    <option value="" disabled selected>- selecciona una editorial -</option>
+                                    <% allPublishers.forEach(publisher => { %>
+                                    <option value="<%= publisher.id %>"><%= publisher.name %></option>
+                                    <% }); %>
+                                </select>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="classification_id">Clasificación</label>
+                                </div>
+                                <select name="classification_id" id="classification_id" required>
+                                    <option value="" disabled selected>- selecciona la clasificación -</option>
+                                    <% allClassifications.forEach(classification => { %>
+                                    <option value="<%= classification.id %>"><%= classification.name %></option>
+                                    <% }); %>
+                                </select>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="release_date">Fecha de publicación</label>
+                                </div>
+                                <input type="date" id="release_date" name="release_date" class="form-control <%= locals.price && errors.price ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.price : null %>">
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="title">Imagén de la portada</label>
+                                </div>
+                                <input type="file" name="image" id="image" accept=".jpg, .jpeg, .tiff" value="">
+                            </div>
+
+                            <div class="submit-button">    
+                                <button type="submit" class="button">
+                                    <div>
+                                        <p>CARGAR</p>
+                                    </div>
+                                </button>
+                            </div>
+
+                        </form>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+
+<!--Main-->
+
+    </main>
+
+<!--Footer-->
+
+    <%- include ('partials/footer') %>
+
+<!--Footer-->
+
+<!--Body-->
+
+</body>
+</html>

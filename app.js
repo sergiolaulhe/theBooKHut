@@ -60,6 +60,7 @@ app.use(userLoggedMiddleware);
 const mainRoutes = require('./routes/mainRoutes');
 const usersRoutes = require('./routes/usersRoutes');
 const productsRouter = require('./routes/productsRoutes');
+const booksRouter = require('./routes/bookRoutes');
 
 
 
@@ -67,6 +68,7 @@ const productsRouter = require('./routes/productsRoutes');
 app.use('/', mainRoutes);
 app.use('/users', usersRoutes);
 app.use('/products', productsRouter);
+app.use('/books', booksRouter);
 
 
 

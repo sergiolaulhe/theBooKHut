@@ -3,7 +3,7 @@
 
 <!--Head-->
 
-<%- include('partials/head', { title: Book.title }) %>
+<%- include('partials/head', { title: Agregando }) %>
 
 <!--Head-->
 
@@ -21,15 +21,15 @@
 
     <main>
 
-        <h1>Estas editando: <%= Book.title %></h1>
+        <h1>Para agregar un nuevo libro completa los siguientes campos:</h1>
         <section>
-            <form action="/products/update/<%= Book.id %>">
+            <form action="/products/create">
 
                 <div>
                     <div>
                         <label for="title">Título del libro</label>
                     </div>
-                    <input type="text" id="title" name="title" placeholder="Ingresa un nuevo titulo" value="<%= Book.title %>">
+                    <input type="text" id="title" name="title" placeholder="Ingresa el titulo" value="">
                 </div>
 
                 <div>
@@ -58,14 +58,14 @@
                     <div>
                         <label for="price">Precio</label>
                     </div>
-                    <input type="number" id="price" name="price" placeholder="Ingresa el nuevo valor" value="<%= Book.price %>">
+                    <input type="number" id="price" name="price" placeholder="Ingresa el nuevo valor" value="">
                 </div>
 
                 <div>
                     <div>
                         <label for="description">Descripción</label>
                     </div>
-                    <textarea name="description" id="description" cols="30" rows="10" placeholder="Agregar escripción" value="<%= Book.description %>"></textarea>
+                    <textarea name="description" id="description" cols="30" rows="10" placeholder="Agregar escripción" value=""></textarea>
                 </div>
 
                 <div>
@@ -94,27 +94,27 @@
                     <div>
                         <label for="release_date">Fecha de publicación</label>
                     </div>
-                    <input type="date" id="release_date" name="release_date" value="<%= Book.release_date %>">
+                    <input type="date" id="release_date" name="release_date" value="">
                 </div>
 
                 <div>
                     <div>
                         <label for="stock">Cantidad en stock</label>
                     </div>
-                    <input type="number" id="stock" name="stock" placeholder="Ingresa la nueva cantidad" value="<%= Book.stock %>">
+                    <input type="number" id="stock" name="stock" placeholder="Ingresa la nueva cantidad" value="">
                 </div>
 
                 <div>
                     <div>
                         <label for="image">Imagen de la portada</label>
                     </div>
-                    <input type="file" name="image" id="image" accept=".jpg, .jpeg, .tiff" value="<%= Book.image %>">
+                    <input type="file" name="image" id="image" accept=".jpg, .jpeg, .tiff" value="">
                 </div>
 
                 <div>
                     <button type="submit">
                         <div>
-                            <p>ACTUALIZAR</p>
+                            <p>CARGAR</p>
                         </div>
                     </button>
                 </div>

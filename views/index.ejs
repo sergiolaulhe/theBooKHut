@@ -36,22 +36,21 @@
         <header>
             <h2>Los más vendidos</h2>
         </header>
-
         
         <div class="products-container">
-            <% products.forEach (products => { %>
-                <% if (products.category == 'visited') { %>
-            <a href="/products/detail/<%= products.id%>">
+            <% books.forEach (book => { %>
+                <% if (book.classification.name == 'Best-Seller') { %>
+            <a href="/products/detail/<%= book.id%>">
             <article class="book-item">
                 <div class="item-img">    
-                    <img class="book-image" src="/images/products/<%= products.image ? products.image : 'default.jpeg' %>" alt="book-image">
+                    <img class="book-image" src="/images/products/<%= book.image ? book.image : 'default.jpeg' %>" alt="book-image">
                 </div>
                 <div class="item-info">
-                    <h3><%= products.title %></h3>
-                    <p><%= products.author %></p>
+                    <h3><%= book.title %></h3>
+                    <p><%= book.author.first_name %><%= book.author.last_name %></p>
                 </div>
                 <div class="item-price">
-                    <p>$<%= products.price %></p>
+                    <p>$<%= book.price %></p>
                 </div>
             </article>
             </a>
@@ -61,36 +60,65 @@
         </div>
     </section>
 
+    <hr class="separator">    
+
     <section class="product-section">
         <header>
             <h2>Nuevos lanzamientos</h2>
         </header>
-
-        
         <div class="products-container">
-            <% products.forEach (products => { %>
-                <% if (products.category == 'new-release') { %>
-            <a href="/products/detail/<%= products.id%>">
+            <% books.forEach (book => { %>
+                <% if (book.classification.name == 'Nuevos lanzamientos') { %>
+            <a href="/products/detail/<%= book.id%>">
             <article class="book-item">
                 <div class="item-img">    
-                    <img class="book-image" src="/images/products/<%= products.image ? products.image : 'default.jpeg' %>" alt="book-image">
+                    <img class="book-image" src="/images/products/<%= book.image ? book.image : 'default.jpeg' %>" alt="book-image">
                 </div>
                 <div class="item-info">
-                    <h3><%= products.title %></h3>
-                    <p><%= products.author %></p>
+                    <h3><%= book.title %></h3>
+                    <p><%= book.author.first_name %><%= book.author.last_name %></p>
                 </div>
                 <div class="item-price">
-                    <p>$<%= products.price %></p>
+                    <p>$<%= book.price %></p>
                 </div>
             </article>
             </a>
-            <% } %>
-        <% }) %>
+                <% } %>
+            <% }) %>
         
         </div>
+        
     </section>
 
+    <hr class="separator">
+
+    <section class="product-section">
+        <header>
+            <h2>Recomendados</h2>
+        </header>
+        <div class="products-container">
+            <% books.forEach (book => { %>
+                <% if (book.classification.name == 'Recomendado') { %>
+            <a href="/products/detail/<%= book.id%>">
+            <article class="book-item">
+                <div class="item-img">    
+                    <img class="book-image" src="/images/products/<%= book.image ? book.image : 'default.jpeg' %>" alt="book-image">
+                </div>
+                <div class="item-info">
+                    <h3><%= book.title %></h3>
+                    <p><%= book.author.first_name %><%= book.author.last_name %></p>
+                </div>
+                <div class="item-price">
+                    <p>$<%= book.price %></p>
+                </div>
+            </article>
+            </a>
+                <% } %>
+            <% }) %>
+        
+        </div>
     
+    </section>
 
     <hr class="separator">
 

@@ -8,62 +8,62 @@ const { validationResult } = require('express-validator');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const db = require('../database/models/');
+const Category = require('../database/models/Category');
 
 
 const productsController = {
 
-// ***** Get all products ***** //
+// ***** Get all products from DB ***** //
 
     list: function(req, res) { 
-        db.Books.findAll({
-            include: [{ association: 'author'}],
+        db.Book.findAll({
+            include: [{ association: 'author'}, { association: 'publisher'}],
             order: [
                 ['title', 'ASC'],
             ],
         })
             .then(function(books) {
-                console.log(books);
                 res.render('productsList', { books })
             })
     },
-    
-
-    // index: (req, res) => {
-    //     res.render('productsList', {products});
-    // },
 
 // ***** Detail - Detail from one product ***** //
     
-    detail: function (req, res) {
-        console.log('Funciona!'); 
-        db.Books.findByPk(req.params.id)
+    detail: function (req, res) { 
+        db.Book.findByPk(req.params.id, {
+            include: [{ association: 'author'}, { association: 'publisher'}],
+        })
+        
             .then(function(book){
-                console.log(book)
                 res.render('productDetail', { book })
-            })
+            });
     },
 
-    // detail: function (req, res) {
-    //     console.log('hola');
-    //     const idProduct = req.params.id;
-	// 	const product = products.find( elemento => elemento.id == idProduct);
-	// 	res.render('productDetail', {product: product});
-    // },
+// ***** CRUD ***** //
 
-// ***** Create - Form to create ***** //
+// ***** add - Form to create ***** //
 
     add: (req, res) => {
-        //agregar las claves foraneas:
-        // let promGenres = Genres.findAll();
-        // let promActors = Actors.findAll();
-        
-        // Promise
-        // .all([promGenres, promActors])
-        // .then(([allGenres, allActors]) => {
-        //     return res.render(path.resolve(__dirname, '..', 'views',  'moviesAdd'), {allGenres,allActors})})
-        // .catch(error => res.send(error))
+        const allAuthors = db.Author.findAll();
+        const allCategorys = db.Category.findAll();
+        const allPublishers = db.Publisher.findAll();
+        const allClassifications = db.Classification.findAll();
 
-        res.render('product-create-form');
+        Promise.all([allAuthors, allCategorys, allPublishers, allClassifications])
+        .then(([allAuthors, allCategorys, allPublishers, allClassifications]) => {
+            res.render('product-create-form1', { allAuthors:allAuthors, allCategorys:allCategorys, allPublishers:allPublishers, allClassifications:allClassifications})
+        });
+
+// opcion 3
+        // db.Book.findAll({
+        //     include: [{ association: 'author'}, { association: 'publisher'}],
+        // })
+        //     .then(function(books) {
+        //         console.log(books);
+        //         res.render('books-create-form', { books })
+        //     })
+
+        
     },
 
 // ***** Create - Method to store ***** //
@@ -72,16 +72,16 @@ const productsController = {
         let errors = validationResult(req);
         
         if(errors.isEmpty()){
-            db.Books.create({
+            db.Book.create({
                 title: req.body.title,
                 price: req.body.price,
                 description: req.body.description,
                 stock: req.body.stock,
                 image: req.file.filename,
-                author_id: req.body.author,
-                category_id: req.body.category,
-                publisher_id: req.body.publisher,
-                status_id: req.body.status
+                // author_id: req.body.author,
+                // category_id: req.body.category,
+                // publisher_id: req.body.publisher,
+                // status_id: req.body.status
             }).then(function(data){
                 return res.redirect('/products');
 
@@ -109,39 +109,42 @@ const productsController = {
 // ***** Update - Form to edit ***** //
 
     edit: (req, res) => {
-        console.log('FUnciona');
-        db.Books.findByPk(req,params.id) 
-            .then(function(book) {
-                console.log(book);
-                res.render('productEditForm', { book })
-            }
+        
+        let Book = db.Book.findByPk(req.params.id);
+        const allAuthors = db.Author.findAll();
+        const allCategorys = db.Category.findAll();
+        const allPublishers = db.Publisher.findAll();
+        const allClassifications = db.Classification.findAll();
+        
+        Promise.all([Book, allAuthors, allCategorys, allPublishers, allClassifications])
+        .then(([Book, allAuthors, allCategorys, allPublishers, allClassifications]) => {
+            res.render('product-edit-form', { Book:Book, allAuthors:allAuthors, allCategorys:allCategorys, allPublishers:allPublishers, allClassifications:allClassifications})
+        });
 
-
-        // const idProduct = req.params.id;
-		// const productEdit = products.find( item => item.id == idProduct)
-		// res.render('product-edit-form', { productEdit })
-    )},
+},
     
 // ***** Update - Method to update ***** //
 
     update: (req, res) => {
-    db.Books.update({
-        title: req.body.title,
-        price: req.body.price,
-        description: req.body.description,
-        stock: req.body.stock,
-        image: req.file.filename,
-        author_id: req.body.author,
-        category_id: req.body.category,
-        publisher_id: req.body.publisher,
-        status_id: req.body.status
+        db.Book.update({
+            title: req.body.title,
+            author_id: req.body.author_id,
+            category_id: req.body.category_id,
+            price: req.body.price,
+            description: req.body.description,
+            publisher_id: req.body.publisher_id,
+            classification_id: req.body.classification_id,
+            release_date: req.body.release_date,
+            stock: req.body.stock,
+            image: req.file.filename
     
-    }, {
-        where: {
-            id: req.paramas.id
-        }
-    }).then(function(){
-        res.redirect('/products/detail' + req.params.id)
+        }, {
+            where: {
+                id: req.paramas.id
+            }
+        }).
+        then(function(book){
+            res.redirect('/products')
     })
 
     
@@ -157,7 +160,7 @@ const productsController = {
 
     delete: (req, res) => {
         console.log('Eliminar');
-        db.Books.destroy({
+        db.Book.destroy({
             where: {
                 id: req.params.id
             }
