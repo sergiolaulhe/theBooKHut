@@ -5,11 +5,13 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 
+// const axios = require('axios');
 
 
 
 
 // ***** Express execution ***** //
+
 const app = express();
 
 // ***** Middlewares require ***** //
@@ -31,7 +33,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Configuramos la app para poder sobreescribir los metodos originales del formulario
-app.use(methodOverride('method'));
+app.use(methodOverride('_method'));
 
 // session
 
@@ -53,26 +55,26 @@ app.use(userLoggedMiddleware);
 
 
 
-
-
 // ***** Route System require and use() ***** //
 
 const mainRoutes = require('./routes/mainRoutes');
 const usersRoutes = require('./routes/usersRoutes');
 const productsRouter = require('./routes/productsRoutes');
-const booksRouter = require('./routes/bookRoutes');
 
 
+// ***** APIs Route System require and use() ***** //
+
+const apiProductsRoutes = require('./routes/api/apiProductsRoutes');
+// const apiUsersRoutes = requires('./routes/api/apiUsersRoutes');
 
 
 app.use('/', mainRoutes);
 app.use('/users', usersRoutes);
 app.use('/products', productsRouter);
-app.use('/books', booksRouter);
 
 
-
-
+app.use('/api/v1', apiProductsRoutes);
+// app.use('/api/v1', apiUsersRoutes);
 
 
 // ***** catch 404 and forward to error handler ***** //

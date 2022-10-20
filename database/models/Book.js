@@ -34,7 +34,10 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING
         },
         release_date: {
-            type: dataTypes.DATE
+            type: dataTypes.DATEONLY
+        },
+        stock: {
+            type: dataTypes.INTEGER
         },
         image: {
             type: dataTypes.STRING

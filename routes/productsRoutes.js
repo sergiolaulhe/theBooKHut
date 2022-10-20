@@ -30,6 +30,10 @@ router.get('/', productsController.list);
 
 router.get('/detail/:id', productsController.detail);
 
+//***** Search products list *****//
+
+router.get('/search', productsController.search);
+
 //***** Create one product *****//
 
 router.get('/add', productsController.add);
@@ -38,11 +42,11 @@ router.post('/create', uploadFile.single('image'), validateProductCreateForm, pr
 //***** Edit one product *****//
 
 router.get('/edit/:id', productsController.edit);
-router.put('/update/:id', productsController.update);
+router.put('/edit/:id', uploadFile.single('image'), productsController.update);
 
 //***** Delete one product *****//
 router.get('/delete/:id', productsController.delete);
-router.post('/delete/:id', productsController.destroy);
+router.delete('/delete/:id', productsController.destroy);
 
 
 module.exports = router;

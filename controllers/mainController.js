@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const db = require('../database/models');
-const Op = db.Sequelize.Op;
+
+const { Op } = require("sequelize");
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
@@ -21,24 +22,44 @@ const controller = {
         })
             .then(function(books) {
                 res.render('index', { books })
-            })
+
+            }).catch((error) => {
+            console.log({ error });
+            res.send('la cague')
+        })
 
     },
 
 // ***** Home - Get all products by classification ***** //
 
     //Agregar busqueda con DB!!//
-
+    
     search: (req, res) => {
-        const formSearch = req.query.keywords.toLowerCase();
-        console.log(formSearch)
 
-		const productSearch = products.filter((item) => {
-            const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-			return item.name.toLowerCase().includes(formSearch);
-		});
-        console.log(productSearch)
-        res.render('results', {productSearch, formSearch});
+        
+        res.render('prueba')
+
+        // db.Book.findAll({
+        //     where: { 
+        //         [Op.or]: 
+        //         [
+        //             { title: req.query.keywords.toLowerCase() },
+        //             { author: req.query.keywords.toLowerCase() }
+        //         ]
+        //     },
+        // })
+        // .then (books => {
+        //     console.log(books);
+        //     if (books.length > 0) {
+        //         return res.render('productList', { books });
+
+        //     } else {
+                
+        //         let msg = 'No se encuentran coincidencias en nuestra base de datos';
+        //         return res.render('productList', { msg });
+        //     }
+        // })
+
     },
 
     bestSeller: (req, res) => {
@@ -51,7 +72,11 @@ const controller = {
         })
         .then(books => {
             res.render('bestSellersList', { books });
-        });
+
+        }).catch((error) => {
+            console.log({ error });
+            res.send('la cague')
+        })
     },
     new: (req, res) => {
         db.Books.findAll({
@@ -62,7 +87,11 @@ const controller = {
         })
         .then(books => {
             res.render('newReleasesList', { books });
-        });
+
+        }).catch((error) => {
+            console.log({ error });
+            res.send('la cague')
+        })
     }
     
 };

@@ -21,7 +21,6 @@ module.exports = (sequelize, dataTypes) => {
         user_name: {
             type: dataTypes.STRING
         },
-        
         birth_date: {
             type: dataTypes.DATE
         },
@@ -33,7 +32,16 @@ module.exports = (sequelize, dataTypes) => {
         },
         role_id: {
             type: dataTypes.INTEGER
+        },
+        createdAt: {
+            type: dataTypes.DATE
+        },
+        updatedAt: {
+            type: dataTypes.DATE
         }
+
+        
+        
 
     };
 
@@ -42,9 +50,16 @@ module.exports = (sequelize, dataTypes) => {
         timestamps: true
     };
 
-    const Usuario = sequelize.define(alias, cols, config);
+    const Users = sequelize.define(alias, cols, config);
 
-    return Usuario;
+    Users.associate = function(models) {
+        Users.belongsTo(models.Role, {
+            as: 'role',
+            foreignKey: 'role_id'       
+        })
+    }
+
+    return Users;
 }
 
 

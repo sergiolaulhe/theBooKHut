@@ -2,7 +2,7 @@
 
     <div class="user-navbar">
         <ul class="left-user-navbar">
-            <a href="/"><li><i class="fa-solid fa-house"></i></li></a>
+            <a href="/" class="home-button"><li><i class="fa-solid fa-house"></i></li></a>
             <a href=""><li><i class="fa-solid fa-envelope"></i></li></a>
         </ul>
 
@@ -28,36 +28,45 @@
 
     </div>
     
-    <div>
-        <form action="/search" method="GET" class="search-form">
-            <input type="text" name="keywords" placeholder="Buscar por titulo, autor..." class="search-form-input">
-            <button type="submit" class="search-form-button"><i class="fas fa-search"></i></button>
-        </form>
-    </div>
+   
+<div>
+    <form class="search-form" action="/products/search" method="GET">
+        <input type="search" name="search" class="search-form-input" placeholder="Buscar productos, marcas y más">
+        <button type="submit" class="search-form-button" value="search"><i class="fa fa-search"></i> </button>
+    </form>
+</div>
 
     <section class="center-section">
+
+        <div class="book-menu">
+            <ul>
+                <li>Inicio</li>
+                <li>Categorias</li>
+                <li>Los mas vendidos</li>
+            </ul>
+        </div>
+
         <div class="menu-center-section">
-            <a class="center-section-book" aria-label="mobile menu">
-                <i class="fa-solid fa-book"></i>
-            </button>
+            <i class="fa-solid fa-book"></i>
         </div>
 
         <div class="contenedor-logo">
             <a href="/">
-            <img class="logo" src="/images/logo_the BooK Hut.png" alt="theBooKHutStore">
+                <img class="logo" src="/images/logo_the BooK Hut.png" alt="theBooKHutStore">
             </a>
         </div>
 
         <div class="search-form-hide-on-mobile">
-            <form action="/search" method="GET" class="search-form-tablet">
-                <input type="text" name="keywords" placeholder="Buscar por titulo, autor..." class="search-form-input">
-                <button type="submit" class="search-form-button"><i class="fas fa-search"></i></button>
+            <form action="/products/search" method="GET" class="search-form-tablet">
+                <input type="search" name="search" placeholder="Buscar por titulo, autor..." class="search-form-input">
+                <button type="submit" class="search-form-button" value="search"><i class="fas fa-search"></i></button>
             </form>
         </div>
     
         <div class="menu-center-section">
             <i class="fa-solid fa-basket-shopping"></i>
         </div>
+
     </section>
 
     <nav class="main-header-navbar">

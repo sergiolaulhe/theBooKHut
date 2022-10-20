@@ -1,13 +1,20 @@
 /*********** Basics *************/
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
-    margin: 0px;
-    font-size: 10px;
+    font-size: 12px;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
 }
 
 ul,
@@ -17,14 +24,13 @@ ol {
     padding: 0;
 }
 
-a {
-    display: inline-block;
-    text-decoration: none;
-    color: inherit;
-}
 
 img {
     width: 100%;
+}
+
+div.errors {
+    color: red;
 }
 
 .book-image:hover {
@@ -44,6 +50,10 @@ img {
     font-size: 1.5em;
     font-weight: 200;
 }
+
+.main-title {
+
+}
 /*********** Header *************/
 
 .user-navbar {
@@ -52,6 +62,13 @@ img {
     display: none;
 
 }
+
+/**** Menu desplegable ****/
+
+
+/**** Menu desplegable ****/
+
+
 
 .left-user-navbar {
     display: flex;
@@ -85,8 +102,8 @@ li:hover {
 
 .search-form-button {
     position: absolute;
-    right: 28px;
-    height: 54%;
+    right: 31px;
+    height: 32%;
     background-color: #ffffff;
     border: none;
     border-left: solid 1px lightgray;
@@ -149,8 +166,6 @@ header .altHeader {
 
 
 
-
-
 /************* Main **************/
 
 
@@ -210,7 +225,7 @@ header .altHeader {
     width: 5rem;
 }
 
-.suscription-button {
+.subscription-button {
     width: 100%;
     font-size: 16px;
     line-height: 40px;
@@ -461,11 +476,29 @@ input {
 
 /************* Register **************/
 
+/************* Validation **************/
+
+.text-danger-validation {
+    padding: .25rem;
+    color: red;
+}
+
 .is-invalid {
     border: red solid 1px
 }
 
 /************* Product Detail **************/
+
+.product-detail-main {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    border:#03364F solid 1px;
+    margin: 5px;
+    padding: 10px;
+
+}
 
 .product-detail-img {
     width: 45vw;
@@ -502,6 +535,17 @@ input {
 
 .logo {
     width: 190px;
+}
+
+.search-form-button {
+    position: absolute;
+    right: 31px;
+    height: 5%;
+    background-color: #ffffff;
+    border: none;
+    border-left: solid 1px lightgray;
+    color: gray;
+    cursor: pointer;
 }
 
 .main-header-navbar,

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Head-->
+
+<%- include('partials/head.ejs', { title: 'Inicia sesión' }) %>
+
+<!--Body-->
+
+<body>
+
+<!--Header-->
+
+    <%- include('partials/header.ejs') %>
+
+<!--Main-->
+
+    <main>
+
+        <h1> funciona</h1>
+
+        <div>
+            <form method="GET" action="/search">
+
+                <input type="text" name="keywords">
+
+                <button type="submit">Buscar libro</button>
+
+            </form>
+        </div>
+
+        <br>
+        <ul
+            <% for(let i = 0; i < books.length; i++) { %>
+
+                <li>
+                    <a href="/products/detail/<%= books[i].id%>"><%= books[i].title %></a>        
+                </li>
+            <% } %>
+        </ul>
+
+    </main>
+
+<!--Main-->
+    
+<!--Footer-->
+    
+    <%- include ('./partials/footer') %>
+    
+<!--Footer-->
+    
+</body>
+    
+<!--Body-->
+    
+</html>

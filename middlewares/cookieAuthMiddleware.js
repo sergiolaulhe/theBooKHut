@@ -20,7 +20,5 @@ function cookieAuthMiddleware (req, res, next) {
     }
     next();
 }
-    
-        
 
 module.exports = cookieAuthMiddleware;

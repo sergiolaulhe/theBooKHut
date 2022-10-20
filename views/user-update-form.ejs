@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Head-->
+
+<%- include('./partials/head') %>
+
+<!--Head-->
+
+<!--Body-->
+
+<body>
+
+<!--Header-->
+
+    <%- include('./partials/header') %>
+
+<!--Header-->
+
+<!--Main-->
+
+    <main class="main-form">
+        <div class="main-form-container">
+            <div class="main-box">
+                <div class="main-form-gap">
+
+                    <div class="section-title">
+                        <h1>Hola! <%= user.user_name %></h1>
+                    </div>
+
+                    <div class="section-title">
+                        <h1>Edita los datos personales de tu cuenta:</h1>
+                    </div>
+
+                    <section class="form-container">
+
+                        <form action="/users/update/<%= user.id %>?_method=PUT" method="POST" class="form">
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label for="name">Nombre completo</label>
+                                </div>
+                                <input type="text" id="name" name="name" placeholder="Ingresa tu nombre" value="<%= user.name %>">
+                                <% if (locals.errors && errors.name) { %>
+                                    <p>
+                                        <%= errors.name.msg %>
+                                    </p>
+                                    <% } %>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label for="email">Correo electronico</label>
+                                </div>
+                                <input type="email" id="email" name="email" placeholder="Ingresa un nuevo correo electronico" value="<%= user.email %>">
+                                <% if (locals.errors && errors.email) { %>
+                                    <div>
+                                        <%= errors.email.msg %>
+                                    </div>
+                                <% } %>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label for="password">Contraseña</label>
+                                </div>
+                                <input type="password" id="title" name="title" placeholder="Ingresa una nueva contraseña" value="">
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label for="user_name">Nombre de usuario</label>
+                                </div>
+                                <input type="text" id="user_name" name="user_name" placeholder="Ingresa un nuevo nombre de usuario" value="<%= user.user_name %>">
+                                <% if (locals.errors && errors.user_name) { %>
+                                    <div>
+                                        <%= errors.user_name.msg %>
+                                    </div>
+                                <% } %>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label for="birth_date">Fecha de nacimiento</label>
+                                </div>
+                                <input type="date" id="birth_date" name="birth_date" value="<%= user.birth_date %>">
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label for="address">Dirección</label>
+                                </div>
+                                <input type="text" id="address" name="address" placeholder="Ingresa una nueva dirección" value="<%= user.address %>">
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label for="phone">Número de telefono</label>
+                                </div>
+                                <input type="text" id="phone" name="phone" placeholder="Ingresa un nuevo número de telefono" value="<%= user.phone %>">
+                            </div>
+
+                            <div class="submit-button">
+                                <button type="submit" class="button">
+                                    <div>
+                                        <p>ACTUALIZAR</p>
+                                    </div>
+                                </button>
+                            </div>
+        
+                        </form>
+
+                    </section>
+
+                    <div class="submit-button">
+                        <button class="button">
+                            <div>
+                                <p><a href="/users/profile">CANCELAR</a></p>
+                            </div>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+<!--Main-->
+
+<!--Footer-->
+
+    <%- include ('./partials/footer') %>
+
+<!--Footer-->
+
+</body>
+
+<!--Body-->
+
+</body>
+</html>

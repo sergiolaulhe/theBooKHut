@@ -30,24 +30,26 @@
 
                         <div class="group-form">
                             <div class="group-label">
-                                <label class="label" for="email">Ingresa tu nombre completo</label>
+                                <label class="label" for="name">Ingresa tu nombre completo</label>
                             </div>
-                            <input type="text" name="name" placeholder="Nombre completo" class="form-control <%= locals.errors && errors.name ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.name : null %>">
+                            <input type="text" name="name" placeholder="Nombre completo" id="inputName" class="form-control <%= locals.errors && errors.name ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.name : null %>">
+                            <div>
+                                <small class="text-danger-validation erName"></small>
+                            </div>
                             <% if (locals.errors && errors.name) { %>
-                                <div>
+                                <div class="text-danger-validation">
                                     <%= errors.name.msg %>
                                 </div>
                             <% } %>
-                        
                         </div>
             
                         <div class="group-form">
                             <div class="group-label">
                                 <label class="label" for="email">Ingresa tu correo electrónico</label>
                             </div>
-                            <input type="email" name="email" placeholder="Correo electrónico"class="form-control <%= locals.errors && errors.email ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.email : null %>">
+                            <input type="email" name="email" placeholder="Correo electrónico" class="form-control <%= locals.errors && errors.email ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.email : null %>" required>
                             <% if (locals.errors && errors.email) { %>
-                                <div>
+                                <div class="text-danger-validation">
                                     <%= errors.email.msg %>
                                 </div>
                             <% } %>
@@ -59,7 +61,7 @@
                             </div>
                             <input type="email" name="mailConfirmation" placeholder="Correo electrónico" class="form-control <%= locals.errors && errors.mailConfirmation ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.mailConfirmation : null %>">
                             <% if (locals.errors && errors.mailConfirmation) { %>
-                                <div>
+                                <div class="text-danger-validation">
                                     <%= errors.mailConfirmation.msg %>
                                 </div>
                             <% } %>
@@ -69,9 +71,9 @@
                             <div class="group-label">
                                 <label class="label" for="password">Crea una contraseña</label>
                             </div>
-                            <input type="password" name="password" placeholder="Crea una contraseña" class="form-control <%= locals.errors && errors.password ? 'is-invalid' : null %>">
+                            <input type="password" name="password" placeholder="Crea una contraseña" class="form-control <%= locals.errors && errors.password ? 'is-invalid' : null %>" required>
                             <% if (locals.errors && errors.password) { %>
-                                <div>
+                                <div class="text-danger-validation">
                                     <%= errors.password.msg %>
                                 </div>
                             <% } %>
@@ -83,7 +85,7 @@
                             </div>
                             <input type="text" name="userName" placeholder="Nombre de usuario" class="form-control <%= locals.errors && errors.userName ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.userName : null %>">
                             <% if (locals.errors && errors.userName) { %>
-                                <div>
+                                <div class="text-danger-validation">
                                     <%= errors.userName.msg %>
                                 </div>
                             <% } %>
@@ -93,13 +95,32 @@
                             <div class="group-label">
                                 <label class="label" for="birth_date" >Fecha de nacimiento</label>
                             </div>
-                                <input type="date" name="birth_date">
+                                <input type="date" name="birth_date" class="form-control <%= locals.errors && errors.birth_date ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.birth_date : null %>">
+                                <% if (locals.errors && errors.birth_date) { %>
+                                    <div class="text-danger-validation">
+                                        <%= errors.birth_date.msg %>
+                                    </div>
+                                <% } %>
+                        </div>
+
+                        <div class="group-form">
+                            <div class="group-label">
+                                <label class="label" for="address">Ingresa tu dirección</label>
+                            </div>
+                            <input type="text" name="address" placeholder="Ingresa tu dirección" class="form-control <%= locals.errors && errors.address ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.address : null %>">
+                        </div>
+
+                        <div class="group-form">
+                            <div class="group-label">
+                                <label class="label" for="phone">Ingresa número de telefono</label>
+                            </div>
+                            <input type="number" name="phone" placeholder="Ingresa tu número de telefono" class="form-control <%= locals.errors && errors.phone ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.phone : null %>">
                         </div>
                     
                         <div class="submit-button">
-                            <button type="submit" class="button">
+                            <button type="submit" class="button" id="button">
                                 <div>
-                                    <p>ENVIAR</p>
+                                    <p>CREAR</p>
                                 </div>
                             </button>
                         </div>
@@ -112,5 +133,6 @@
         </div>
     </main>
     
+    <script src="/js/registerValidation.js"></script>
 </body>
 </html>

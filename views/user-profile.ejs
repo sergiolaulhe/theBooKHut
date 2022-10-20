@@ -23,19 +23,20 @@
         <div class="main-box">
             <div class="main-form-gap">
 
-                <div class="section-title">
-                    <h2>Informació del perfil de tu cuenta</h2>
-                </div>          
                 <div>
-                    <h2>Hola: <%= user.name %>, has ingresado correctamente</h2>
+                    <h2>Hola: <%= user.user_name %>!</h2>
                 </div>
+
+                <div class="section-title">
+                    <h2>Esta es la información del perfil de tu cuenta:</h2>
+                </div>          
 
                 <div>
                     <p>Nombre: <%= user.name %></p>
                 </div>
     
                 <div>
-                    <p>Usuario: <%= user.userName %></p>
+                    <p>Usuario: <%= user.user_name %></p>
                 </div>
 
                 <div>
@@ -43,21 +44,21 @@
                 </div>
 
                 <div>
-                    <p>Fecha de nacimiento: <%= user.day %>/<%= user.month %>/<%= user.year %> </p>
+                    <p>Fecha de nacimiento: <%= user.birth_date %> %> </p>
                 </div>
 
                 <div>
-                    <p>Número de teléfono: <%= user.userName %></p>
+                    <p>Número de teléfono: <%= user.phone %></p>
                 </div>
 
                 <div>
-                    <p>Dirección: <%= user.userName %></p>
+                    <p>Dirección: <%= user.address %></p>
                 </div>
 
                 <div class="submit-button">
                     <button type="submit" class="button">
                         <div>
-                            <p>EDITAR PERFIL</p>
+                            <a href="/users/update/<%= user.id %>"><p>EDITAR PERFIL</p></a>
                         </div>
                     </button>
                 </div>
@@ -65,7 +66,7 @@
                 <div class="submit-button">
                     <button type="submit" class="button">
                         <div>
-                            <p>CERRAR CESIÓN</p>
+                            <a href="/users/logout"><p>CERRAR CESIÓN</p></a>
                         </div>
                     </button>
                 </div>

@@ -24,11 +24,11 @@
             <h1>Confirmas la eliminación del libro: <%= Book.title %></h1>
         </div>
 
-        <form action="/products/delete/<%= Book.id %>" method="POST">
+        <form action="/products/delete/<%= Book.id %>?_method=DELETE" method="POST">
             <br>
-            <p> <button class="" type="submit">Eliminar el libro</button>
+            <p> <button class="" type="submit">Eliminar el libro</button> </p>
             
-            <a  class="" href="/products">Listado de libros</a></p>
+            <button><a  class="" href="/products">Listado de libros</a></button>
 
         </form>
 

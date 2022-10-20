@@ -3,7 +3,7 @@
 
 <!--Head-->
 
-<%- include('partials/head', { title: Book.title }) %>
+<%- include('./partials/head') %>
 
 <!--Head-->
 
@@ -13,122 +13,146 @@
 
 <!--Header-->
 
-    <%- include('partials/header') %>
+    <%- include('./partials/header') %>
 
 <!--Header-->
 
 <!--Main-->
 
-    <main>
+    <main class="main-form">
+        <div class="main-form-container">
+            <div class="main-box">
+                <div class="main-form-gap">
 
-        <h1>Estas editando: <%= Book.title %></h1>
-        <section>
-            <form action="/products/update/<%= Book.id %>">
-
-                <div>
-                    <div>
-                        <label for="title">Título del libro</label>
+                    <div class="section-title">
+                        <h1>Estas editando: <%= Book.title %></h1>
                     </div>
-                    <input type="text" id="title" name="title" placeholder="Ingresa un nuevo titulo" value="<%= Book.title %>">
-                </div>
 
-                <div>
-                    <div>
-                        <label for="author_id">Autor</label>
+                    <section class="form-container">
+                        <form action="/products/edit/<%= Book.id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="form">
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label for="title">Título del libro</label>
+                                </div>
+                                <input type="text" id="title" name="title" placeholder="Ingresa un nuevo titulo" value="<%= Book.title %>">
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="author_id">Autor</label>
+                                </div>
+                                <select name="author_id" id="author_id" required>
+                                    <option value="" disabled selected>- elige un autor -</option>
+                                    <% allAuthors.forEach(author => { %>
+                                    <option value="<%= author.id %>" <% if (Book.author_id == author.id) { %><%= 'selected' %><% }; %>> <%= author.first_name %> <%= author.last_name %></option>
+                                    <% }); %>
+                                </select>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="category_id">Categoria</label>
+                                </div>
+                                <select name="category_id" id="category_id" required>
+                                    <option value="" disabled selected>- elige una categoría -</option>
+                                    <% allCategorys.forEach(category => { %>
+                                    <option value="<%= category.id %>" <% if (Book.category_id == category.id) { %><%= 'selected' %><% }; %>> <%= category.name %></option>
+                                    <% }); %>
+                                </select>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="price">Precio</label>
+                                </div>
+                                <input type="number" id="price" name="price" placeholder="Ingresa el nuevo valor" value="<%= Book.price %>">
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="description">Descripción</label>
+                                </div>
+                                <textarea name="description" id="description" cols="86" rows="10" placeholder="Agregar escripción" value="<%= Book.description %>"></textarea>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="publisher_id">Editorial</label>
+                                </div>
+                                <select name="publisher_id" id="publisher_id" required>
+                                    <option value="" disabled selected>- elige una editorial -</option>
+                                    <% allPublishers.forEach(publisher => { %>
+                                    <option value="<%= publisher.id %>" <% if (Book.publisher_id == publisher.id) { %><%= 'selected' %><% }; %>> <%= publisher.name %></option>
+                                    <% }); %>
+                                </select>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="classification_id">Clasificación</label>
+                                </div>
+                                <select name="classification_id" id="classification_id" required>
+                                    <option value="" disabled selected>- elige una clasificación -</option>
+                                    <% allClassifications.forEach(classification => { %>
+                                    <option value="<%= classification.id %>" <% if (Book.classification_id == classification.id) { %><%= 'selected' %><% }; %>> <%= classification.name %></option>
+                                    <% }); %>
+                                </select>
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="release_date">Fecha de publicación</label>
+                                </div>
+                                <input type="date" id="release_date" name="release_date" value="<%= Book.release_date %>">
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="stock">Cantidad en stock</label>
+                                </div>
+                                <input type="number" id="stock" name="stock" placeholder="Ingresa la nueva cantidad" value="<%= Book.stock %>">
+                            </div>
+
+                            <div class="group-form">
+                                <div class="group-label">
+                                    <label class="label" for="image">Imagen de la portada</label>
+                                </div>
+                                <input type="file" name="image" id="image" accept=".jpg, .jpeg, .tiff" value="<%= Book.image %>">
+                            </div>
+
+                            <div class="submit-button">
+                                <button type="submit" class="button">
+                                    <div>
+                                        <p>ACTUALIZAR</p>
+                                    </div>
+                                </button>
+                            </div>
+
+                        </form>
+
+                    </section>
+
+                    <div class="submit-button">
+                        <button class="button">
+                            <div>
+                                <p><a href="/products">Volver al listado de libros</a></p>
+                            </div>
+                        </button>
                     </div>
-                    <select name="author_id" id="author_id" required>
-                        <% allAuthors.forEach(author => { %>
-                        <option value="<%= author.id %>" <% if (Book.author_id == author.id) { %><%= 'selected' %><% }; %>> <%= author.first_name %> <%= author.last_name %></option>
-                        <% }); %>
-                    </select>
-                </div>
 
-                <div>
-                    <div>
-                        <label for="category_id">Categoria</label>
-                    </div>
-                    <select name="category_id" id="category_id" required>
-                        <% allCategorys.forEach(category => { %>
-                        <option value="<%= category.id %>" <% if (Book.category_id == category.id) { %><%= 'selected' %><% }; %>> <%= category.name %></option>
-                        <% }); %>
-                    </select>
                 </div>
+            </div>
+        </div>
 
-                <div>
-                    <div>
-                        <label for="price">Precio</label>
-                    </div>
-                    <input type="number" id="price" name="price" placeholder="Ingresa el nuevo valor" value="<%= Book.price %>">
-                </div>
-
-                <div>
-                    <div>
-                        <label for="description">Descripción</label>
-                    </div>
-                    <textarea name="description" id="description" cols="30" rows="10" placeholder="Agregar escripción" value="<%= Book.description %>"></textarea>
-                </div>
-
-                <div>
-                    <div>
-                        <label for="publisher_id">Editorial</label>
-                    </div>
-                    <select name="publisher_id" id="publisher_id" required>
-                        <% allPublishers.forEach(publisher => { %>
-                        <option value="<%= publisher.id %>" <% if (Book.publisher_id == publisher.id) { %><%= 'selected' %><% }; %>> <%= publisher.name %></option>
-                        <% }); %>
-                    </select>
-                </div>
-
-                <div>
-                    <div>
-                        <label for="classification_id">Clasificación</label>
-                    </div>
-                    <select name="classification_id" id="classification_id" required>
-                        <% allClassifications.forEach(classification => { %>
-                        <option value="<%= classification.id %>" <% if (Book.classification_id == classification.id) { %><%= 'selected' %><% }; %>> <%= classification.name %></option>
-                        <% }); %>
-                    </select>
-                </div>
-
-                <div>
-                    <div>
-                        <label for="release_date">Fecha de publicación</label>
-                    </div>
-                    <input type="date" id="release_date" name="release_date" value="<%= Book.release_date %>">
-                </div>
-
-                <div>
-                    <div>
-                        <label for="stock">Cantidad en stock</label>
-                    </div>
-                    <input type="number" id="stock" name="stock" placeholder="Ingresa la nueva cantidad" value="<%= Book.stock %>">
-                </div>
-
-                <div>
-                    <div>
-                        <label for="image">Imagen de la portada</label>
-                    </div>
-                    <input type="file" name="image" id="image" accept=".jpg, .jpeg, .tiff" value="<%= Book.image %>">
-                </div>
-
-                <div>
-                    <button type="submit">
-                        <div>
-                            <p>ACTUALIZAR</p>
-                        </div>
-                    </button>
-                </div>
-
-            </form>
-        </section>
 
     </main>
 
-    <!--Main-->
+<!--Main-->
 
 <!--Footer-->
 
-    <%- include ('partials/footer') %>
+    <%- include ('./partials/footer') %>
 
 <!--Footer-->
 

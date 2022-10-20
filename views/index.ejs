@@ -3,169 +3,202 @@
 
 <!--Head-->
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido a the BooK Hut Store</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">    
-    <script src="https://kit.fontawesome.com/f5b0ad43f8.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/styles.css">
-</head>
+<%- include('./partials/head') %>
+
+<!--Head-->
 
 <!--Body-->
 
 <body>
 
-<!-- Header-->
+<!--Header-->
 
-<%- include ('partials/header') %>
+<%- include('./partials/header') %>
 
-<!--Main -->
+<!--Header-->
 
-<main>
+<!--Main-->
 
+    <main>
 <!-- Seccion de productos-->
 
 <!--Show best selling products-->
 
-    <section class="product-section">
-        <header>
-            <h2>Los más vendidos</h2>
-        </header>
-        
-        <div class="products-container">
-            <% books.forEach (book => { %>
-                <% if (book.classification.name == 'Best-Seller') { %>
-            <a href="/products/detail/<%= book.id%>">
-            <article class="book-item">
-                <div class="item-img">    
-                    <img class="book-image" src="/images/products/<%= book.image ? book.image : 'default.jpeg' %>" alt="book-image">
-                </div>
-                <div class="item-info">
-                    <h3><%= book.title %></h3>
-                    <p><%= book.author.first_name %><%= book.author.last_name %></p>
-                </div>
-                <div class="item-price">
-                    <p>$<%= book.price %></p>
-                </div>
-            </article>
-            </a>
+        <section class="product-section">
+            <header>
+                <h1>Los más vendidos</h1>
+            </header>
+
+            <% books.forEach( book => { %>
+                <% if (book.classification_id == '1') { %>
+                <a href="/products/detail/<%= book.id%>">
+                    <article class="book-item">
+                        <div class="item-img">    
+                            <img class="book-image" src="/images/products/<%= book.image ? book.image : 'default.jpeg' %>" alt="book-image">
+                        </div>
+                        <div class="item-info">
+                            <h3><%= book.title %></h3>
+                            <% if (book.author) { %>
+                                <p><%= book.author.first_name + ' ' + book.author.last_name %></p>
+                            <% } %>
+                        </div>
+                        <div class="item-price">
+                            <p>$<%= book.price %></p>
+                        </div>
+                        <form action="#">
+                            <button type="submit">Añadir a la cesta</button>
+                        </form>
+                    </article>
+                </a>
                 <% } %>
+            
             <% }) %>
-        
-        </div>
-    </section>
+        </section>
 
-    <hr class="separator">    
+<!--Show best selling products-->
 
-    <section class="product-section">
-        <header>
-            <h2>Nuevos lanzamientos</h2>
-        </header>
-        <div class="products-container">
-            <% books.forEach (book => { %>
-                <% if (book.classification.name == 'Nuevos lanzamientos') { %>
-            <a href="/products/detail/<%= book.id%>">
-            <article class="book-item">
-                <div class="item-img">    
-                    <img class="book-image" src="/images/products/<%= book.image ? book.image : 'default.jpeg' %>" alt="book-image">
-                </div>
-                <div class="item-info">
-                    <h3><%= book.title %></h3>
-                    <p><%= book.author.first_name %><%= book.author.last_name %></p>
-                </div>
-                <div class="item-price">
-                    <p>$<%= book.price %></p>
-                </div>
-            </article>
-            </a>
+        <hr class="separator">
+
+<!--Show new released products-->
+
+        <section class="product-section">
+            <header>
+                <h1>Nuevos lanzamientos</h1>
+            </header>
+
+            <% books.forEach( book => { %>
+                <% if (book.classification_id == '2') { %>
+                <a href="/products/detail/<%= book.id%>">
+                    <article class="book-item">
+                        <div class="item-img">    
+                            <img class="book-image" src="/images/products/<%= book.image ? book.image : 'default.jpeg' %>" alt="book-image">
+                        </div>
+                        <div class="item-info">
+                            <h3><%= book.title %></h3>
+                            <% if (book.author) { %>
+                                <p><%= book.author.first_name + ' ' + book.author.last_name %></p>
+                            <% } %>
+                        </div>
+                        <div class="item-price">
+                            <p>$<%= book.price %></p>
+                        </div>
+                        <form action="#">
+                            <button type="submit">Añadir a la cesta</button>
+                        </form>
+                    </article>
+                </a>
                 <% } %>
+            
             <% }) %>
-        
-        </div>
-        
-    </section>
+        </section>
 
-    <hr class="separator">
+<!--Show new released products-->
 
-    <section class="product-section">
-        <header>
-            <h2>Recomendados</h2>
-        </header>
-        <div class="products-container">
-            <% books.forEach (book => { %>
-                <% if (book.classification.name == 'Recomendado') { %>
-            <a href="/products/detail/<%= book.id%>">
-            <article class="book-item">
-                <div class="item-img">    
-                    <img class="book-image" src="/images/products/<%= book.image ? book.image : 'default.jpeg' %>" alt="book-image">
-                </div>
-                <div class="item-info">
-                    <h3><%= book.title %></h3>
-                    <p><%= book.author.first_name %><%= book.author.last_name %></p>
-                </div>
-                <div class="item-price">
-                    <p>$<%= book.price %></p>
-                </div>
-            </article>
-            </a>
+        <hr class="separator">
+
+<!--Show recomended products-->
+
+        <section class="product-section">
+            <header>
+                <h1>Recomendados</h1>
+            </header>
+
+            <% books.forEach( book => { %>
+                <% if (book.classification_id == '3') { %>
+                <a href="/products/detail/<%= book.id%>">
+                    <article class="book-item">
+                        <div class="item-img">    
+                            <img class="book-image" src="/images/products/<%= book.image ? book.image : 'default.jpeg' %>" alt="book-image">
+                        </div>
+                        <div class="item-info">
+                            <h3><%= book.title %></h3>
+                            <% if (book.author) { %>
+                                <p><%= book.author.first_name + ' ' + book.author.last_name %></p>
+                            <% } %>
+                        </div>
+                        <div class="item-price">
+                            <p>$<%= book.price %></p>
+                        </div>
+                        <form action="#">
+                            <button type="submit">Añadir a la cesta</button>
+                        </form>
+                    </article>
+                </a>
                 <% } %>
+            
             <% }) %>
-        
-        </div>
-    
-    </section>
+        </section>
 
-    <hr class="separator">
+<!--Show recomended products-->
+
+<!-- Seccion de productos-->
+
+        <hr class="separator">
 
 <!-- Subscription-->
 
-    <div class="main-mail-subscription">
-        <section class="main-subscription-container">
-            <div class="main-mail-subscription-gap">
-                <div class="envelope-container">
-                    <i class="fa-solid fa-envelope-open-text"></i>
-                    <p>Recibe nuestras ofertas y novedades</p>
-                    <div class="suscription-form">
-                        <form action="/suscription" method="post">
-                            <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Correo electronico" name="news-suscription">
-                            </div>
-                            <div class="submit-button">
-                                <button type="submit" class="suscription-button" >Suscribete ahora</button>
-                            </div>
-                        </form>
+        <div class="main-mail-subscription">
+            <section class="main-subscription-container">
+                <div class="main-mail-subscription-gap">
+                    <div class="envelope-container">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                        <p>Recibe nuestras ofertas y novedades</p>
+                        <div class="suscription-form">
+                            <form action="/subscription" method="post">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Correo electronico" name="news-subscription">
+                                </div>
+                                <div class="submit-button">
+                                    <button type="submit" class="subscription-button" >Suscribete ahora</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
+            </section>
+        </div>
 
-    <hr class="separator">
+<!-- Subscription-->
+
+        <hr class="separator">
 
 <!--Social Media-->
 
-    <div class="footer-social-media">
-        <h3>Siguenos</h3>
-        <ul class="footer-social-media-list">
-            <li><a href="https://twitter.com/?lang=es"><i class="fa-brands fa-twitter"></i></a></li>
-            <li><a href="https://www.facebook.com/"><i class="fa-brands fa-square-facebook"></i></a></li>
-            <li><a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a></li>
-            <li><a href="https://ar.pinterest.com/"><i class="fa-brands fa-pinterest"></i></a></li>
-        </ul>
+        <div class="footer-social-media">
+            <h3>Siguenos</h3>
+            <ul class="footer-social-media-list">
+                <li><a href="https://twitter.com/?lang=es"><i class="fa-brands fa-twitter"></i></a></li>
+                <li><a href="https://www.facebook.com/"><i class="fa-brands fa-square-facebook"></i></a></li>
+                <li><a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="https://ar.pinterest.com/"><i class="fa-brands fa-pinterest"></i></a></li>
+            </ul>
+        </div>
 
-    </div>
+<!--Social Media-->
 
-</main>
+    </main>
 
+<!--Main-->
+    
+<!--Footer-->
+    
+    <%- include ('./partials/footer') %>
+    
 <!--Footer-->
 
-<%- include ('partials/footer') %>
 
+
+<script src="/js/js-front.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+<!-- <script src="/js/main.js"></script> -->
+<script src="/js/index.js"></script>
+
+
+    
 </body>
-
+    
+<!--Body-->
+    
 </html>

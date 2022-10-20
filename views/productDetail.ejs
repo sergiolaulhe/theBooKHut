@@ -23,41 +23,71 @@
 
 <!-- Product detail -->
 
-        <section class="">
-            <div class="">
-                    <h2 class="products-title">Titulo: <%= book.title %></h2>
-            </div>
-            <div>
-                <p>Autor: <%= book.author.first_name %> <%= book.author.last_name %></p>
-            </div>
+        <section class="product-detail-main">
+            
             <div class="product-detail-img">
                 <img src="/images/products/<%= book.image %>" alt="">
             </div>
-            <hr class="separator">
-            <div>
-                <p>AR$<%= book.price %></p>
+
+            <div class="">
+                <% if (book.title) { %>
+                <h2 class="products-title"><%= book.title %></h2>
+                <% } %>
             </div>
+            <div>
+                <% if (book.author_id) { %>
+                <p>Autor: <%= book.author.first_name %> <%= book.author.last_name %></p>
+                <% } %>
+            </div>
+
+            <div>
+                <% if (book.price) { %>
+                <p>AR$<%= book.price %></p>
+                <% } %>
+            </div>
+
             <form action="#">
                 <button type="submit">Añadir a la cesta</button>
             </form>
+
         </section>
 
+    <hr class="separator">
 
         <section>
             <div>
-                <h3>Detalle del producto:</h3>
+                <h2>Reseña</h2>
+            </div>
+
+            <div>
+                <% if (book.description) { %>
+                    <p class="product-detail-description"><%= book.description %></p>
+                <% } %>
+            </div>
+
+        </section>
+
+    <hr class="separator">    
+            
+        <section>
+            <div>
+                <h2>Detalle del producto:</h2>
             </div>        
             </div>
+                <% if (book.title) { %>
                 <p>Titulo: <%= book.title %></p>
+                <% } %>
             </div>
+            
             <div>
-                <p class="product-detail-description">Descripción: <%= book.description %></p>
-            </div>
-            <div>
+                <% if (book.publisher_id) { %>
                 <p>Editorial: <%= book.publisher.name %></p>
+                <% } %>
             </div>
             <div>
+                <% if (book.release_date) { %>
                 <p>Fecha de publicación: <%= book.release_date %></p>
+                <% } %>
             </div>
             <div>
                 <p>Idioma: </p>
@@ -94,6 +124,8 @@
     <%- include ('partials/footer') %>
 
 <!--Footer-->
+
+<script src="/js/js-front.js"></script>
 
 </body>
 

@@ -55,7 +55,7 @@
                                     <label class="label" for="category_id">Categoría</label>
                                 </div>
                                 <select name="category_id" id="category_id" required>
-                                    <option value="" disabled selected>- selecciona un autor -</option>
+                                    <option value="" disabled selected>- selecciona una categoría -</option>
                                     <% allCategorys.forEach(category => { %>
                                     <option value="<%= category.id %>"><%= category.name %></option>
                                     <% }); %>
@@ -116,7 +116,7 @@
 
                             <div class="group-form">
                                 <div class="group-label">
-                                    <label class="label" for="title">Imagén de la portada</label>
+                                    <label class="label" for="image">Imagén de la portada</label>
                                 </div>
                                 <input type="file" name="image" id="image" accept=".jpg, .jpeg, .tiff" value="">
                             </div>
@@ -136,9 +136,9 @@
             </div>
         </div>
 
-<!--Main-->
-
     </main>
+
+<!--Main-->
 
 <!--Footer-->
 

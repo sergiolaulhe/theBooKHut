@@ -28,13 +28,19 @@
 
                         <form action="/users/login" method="POST" class="form">
 
+                            <div class="errors">
+                                <ul>
+                                    
+                                </ul>
+                            </div>
+
                             <div class="group-form">
                                 <div class="group-label">
                                     <label class="label" for="email" >Ingresa tu correo electrónico</label>
                                 </div>
-                                <input type="email" name="email" placeholder="Correo electrónico"><br>
+                                <input type="email" name="email" id="email" placeholder="Correo electrónico" class="email" required><br>
                                 <% if (locals.errors && errors.email) { %>
-                                    <div>
+                                    <div class="text-danger-validation">
                                         <%= errors.email.msg %>
                                     </div>
                                 <% } %>
@@ -44,7 +50,12 @@
                                 <div class="group-label">
                                     <label class="label" for="password">Ingresa tu contraseña</label>
                                 </div>
-                                <input type="password" name="password" placeholder="Contraseña"><br>
+                                <input type="password" name="password" placeholder="Contraseña" class="password" minlength="6" maxlength="30" required minlength="6" maxlength="30"><br>
+                                <% if (locals.errors && errors.password) { %>
+                                    <div class="text-danger-validation">
+                                        <%= errors.password.msg %>
+                                    </div>
+                                <% } %>
                             </div>
 
                             <div>
@@ -86,7 +97,7 @@
         </div>
     </main>
 
-
+<script src="/js/login-validation.js"></script>
     
 </body>
 </html>

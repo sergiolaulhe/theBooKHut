@@ -10,6 +10,9 @@ const controller = require('../controllers/mainController');
 //***** GET Home page *****//
 
 router.get('/', controller.index);
+
+//***** Search *****//
+
 router.get('/search', controller.search);
 
 router.get('/bestsellers', controller.bestSeller);

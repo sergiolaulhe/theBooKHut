@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Head-->
+
+<%- include('partials/head', { title: 'Resultados' }) %>
+
+<!--Body-->
+
+<body>
+
+<!--Header-->
+    
+    <%- include('partials/header') %>
+
+<!--Header-->
+
+<!--Main-->
+
+    <main>
+
+<!--Products search results-->
+
+    <div>
+        <h2>Resultados de la búsqueda: <%= %> </h2>
+    </div>
+
+        <% if(results.length == 0) { %>
+        <div class="col-12">
+            <h2 class="" style="color: tomato;">No hay productos que coincidan con esa búsqueda</h2>
+        </div>
+        <% } %>
+    
+    <div>
+        <% for(let i=0; i< results.length; i++) { %>
+
+            <a href="/products/detail/<%= results[i].id%>">
+
+                <article class="book-item">
+
+                    <div class="item-img">    
+                        <img class="book-image" src="/images/products/<%= results[i].image ? results[i].image : 'default.jpeg' %>" alt="book-image">
+                    </div>
+
+                    <p><%= results[i].title %></p>
+
+                    <p><%= results[i].author.first_name %> <%= results[i].author.last_name %></p>
+
+                    <p>$<%= results[i].price %></p>
+
+                </article>
+
+            </a>
+
+        <% } %>
+    </div>
+
+    
+
+
+    
+</body>
+</html>
