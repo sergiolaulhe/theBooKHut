@@ -24,35 +24,44 @@
 
 <!--Show best selling products-->
 
-        <section class="product-section">
-            <header>
+        <section class="product-section-wrap">
+            <header class="section-header">
                 <h1>Los más vendidos</h1>
             </header>
 
+            <div class="products-block-container">
+
             <% books.forEach( book => { %>
                 <% if (book.classification_id == '1') { %>
+                    
                 <a href="/products/detail/<%= book.id%>">
-                    <article class="book-item">
+                    <article class="product-container">
                         <div class="item-img">    
                             <img class="book-image" src="/images/products/<%= book.image ? book.image : 'default.jpeg' %>" alt="book-image">
                         </div>
+
                         <div class="item-info">
-                            <h3><%= book.title %></h3>
+                            <h3 class="title"><%= book.title %></h3>
+
                             <% if (book.author) { %>
-                                <p><%= book.author.first_name + ' ' + book.author.last_name %></p>
+                                <p class="author"><%= book.author.first_name + ' ' + book.author.last_name %></p>
                             <% } %>
                         </div>
-                        <div class="item-price">
-                            <p>$<%= book.price %></p>
+
+                        <div class="price-wrap">
+                            <p class="price">$<%= book.price %></p>
                         </div>
-                        <form action="#">
-                            <button type="submit">Añadir a la cesta</button>
-                        </form>
+
+                        <div class="submit-button">
+                            <button type="submit" class="button">Añadir a la cesta</button>
+                        </div>
+
                     </article>
                 </a>
+                
                 <% } %>
-            
             <% }) %>
+            </div>
         </section>
 
 <!--Show best selling products-->
@@ -61,35 +70,47 @@
 
 <!--Show new released products-->
 
-        <section class="product-section">
-            <header>
+        <section class="product-section-wrap">
+
+            <header class="section-header">
                 <h1>Nuevos lanzamientos</h1>
             </header>
 
-            <% books.forEach( book => { %>
-                <% if (book.classification_id == '2') { %>
+            <div class="products-block-container">
+
+                <% books.forEach( book => { %>
+                    <% if (book.classification_id == '2') { %>
+
                 <a href="/products/detail/<%= book.id%>">
-                    <article class="book-item">
+
+                    <article class="product-container">
+
                         <div class="item-img">    
                             <img class="book-image" src="/images/products/<%= book.image ? book.image : 'default.jpeg' %>" alt="book-image">
                         </div>
+
                         <div class="item-info">
-                            <h3><%= book.title %></h3>
+                            <h3 class="title"><%= book.title %></h3>
+
                             <% if (book.author) { %>
-                                <p><%= book.author.first_name + ' ' + book.author.last_name %></p>
+                                <p class="author"><%= book.author.first_name + ' ' + book.author.last_name %></p>
                             <% } %>
                         </div>
-                        <div class="item-price">
-                            <p>$<%= book.price %></p>
+
+                        <div class="price-wrap">
+                            <p class="price">$<%= book.price %></p>
                         </div>
-                        <form action="#">
-                            <button type="submit">Añadir a la cesta</button>
-                        </form>
+
+                        <div class="submit-button">
+                            <button type="submit" class="button">Añadir a la cesta</button>
+                        </div>
+
                     </article>
                 </a>
-                <% } %>
-            
-            <% }) %>
+
+                    <% } %>
+                <% }) %>
+            </div>
         </section>
 
 <!--Show new released products-->
@@ -98,35 +119,48 @@
 
 <!--Show recomended products-->
 
-        <section class="product-section">
-            <header>
+        <section class="product-section-wrap">
+
+            <header class="section-header">
                 <h1>Recomendados</h1>
             </header>
 
-            <% books.forEach( book => { %>
-                <% if (book.classification_id == '3') { %>
+            <div class="products-block-container">
+
+                <% books.forEach( book => { %>
+                    <% if (book.classification_id == '3') { %>
+
                 <a href="/products/detail/<%= book.id%>">
-                    <article class="book-item">
+
+                    <article class="product-container">
+
                         <div class="item-img">    
                             <img class="book-image" src="/images/products/<%= book.image ? book.image : 'default.jpeg' %>" alt="book-image">
                         </div>
+
                         <div class="item-info">
-                            <h3><%= book.title %></h3>
+                            <h3 class="title"><%= book.title %></h3>
+
                             <% if (book.author) { %>
-                                <p><%= book.author.first_name + ' ' + book.author.last_name %></p>
+                                <p class="author"><%= book.author.first_name + ' ' + book.author.last_name %></p>
                             <% } %>
                         </div>
-                        <div class="item-price">
-                            <p>$<%= book.price %></p>
+
+                        <div class="price-wrap">
+                            <p class="price">$<%= book.price %></p>
                         </div>
-                        <form action="#">
-                            <button type="submit">Añadir a la cesta</button>
-                        </form>
+
+                        <div class="submit-button">
+                            <button type="submit" class="button">Añadir a la cesta</button>
+                        </div>
+
                     </article>
+
                 </a>
-                <% } %>
-            
-            <% }) %>
+                
+                    <% } %>
+                <% }) %>
+            </div>
         </section>
 
 <!--Show recomended products-->

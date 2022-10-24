@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Head-->
+
+<%- include('partials/head', { title: 'Todos los productos' }) %>
+
+<!--Head-->
+
+<!--Body-->
+
+<body>
+
+<!-- Header -->
+
+    <%- include ('partials/header') %>
+
+<!-- Header -->
+
+<!--Main-->
+
+    <main>
+
+<!-- Product list -->
+
+        <section class="product-section-wrap">
+
+            <header class="section-header">
+                <h1>Todos los libros</h1>
+            </header>
+
+            <div class="products-block-container">
+
+                <% books.forEach( book => { %>
+					
+                <a href="/products/detail/<%= book.id%>">
+
+                    <article class="product-container">
+
+                        <div class="item-img">    
+                            <img class="book-image" src="/images/products/<%= book.image ? book.image : 'default.jpeg' %>" alt="book-image">
+                        </div>
+
+                        <div class="item-info">
+                            <h3 class="title"><%= book.title %></h3>
+
+                            <% if (book.author) { %>
+                                <p class="author"><%= book.author.first_name + ' ' + book.author.last_name %></p>
+                            <% } %>
+                        </div>
+
+                        <div class="price-wrap">
+                            <p class="price">$<%= book.price %></p>
+                        </div>
+
+                        <div class="submit-button">
+                            <button type="submit" class="button">Añadir a la cesta</button>
+                        </div>
+
+                    </article>
+            
+                </a>
+        
+                <% }) %>
+            </div>
+        </section>
+
+
+
+<!-- Product list -->
+
+    </main>
+
+<!--Main-->
+
+<!-- footer -->
+
+	<%- include('partials/footer') %>
+
+<!-- /footer -->
+
+<script src="/js/js-list.js"></script>
+
+</body>
+
+<!--Body-->
+
+</html>

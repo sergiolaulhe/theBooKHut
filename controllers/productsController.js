@@ -26,7 +26,7 @@ const productsController = {
             ],
         })
             .then(function(books) {
-                res.render('productsList', { books })
+                res.render('products-list', { books })
 
             }).catch((error) => {
                 console.log({ error });
@@ -42,7 +42,7 @@ const productsController = {
             include: [{ association: 'author'}, { association: 'publisher'}],
         })
             .then(function(book){
-                res.render('productDetail', { book })
+                res.render('product-detail', { book })
 
             }).catch((error) => {
             console.log({ error });
@@ -76,12 +76,12 @@ const productsController = {
             .then (results => {
                 console.log(results);
                 if (results.length > 0) {
-                    return res.render('searchResults', { results });
+                    return res.render('product-search-results', { results });
                 } else {
-                
-                        let msg = 'No se encuentran coincidencias en nuestra base de datos';
-                        return res.render('searchResults', { msg });
-                        }
+                    console.log(results);
+                    let msg = 'No se encuentran coincidencias en nuestra base de datos';
+                    return res.render('prueba');
+                }
             })
             .catch((error) => {
                 console.log({ error });
@@ -179,7 +179,7 @@ const productsController = {
             classification_id: req.body.classification_id,
             release_date: req.body.release_date,
             stock: req.body.stock,
-            // image: req.file.filename
+            image: req.file.filename
     
         }, {
             where: {

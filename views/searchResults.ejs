@@ -25,13 +25,20 @@
         <h2>Resultados de la búsqueda: <%= %> </h2>
     </div>
 
+    <div>
         <% if(results.length == 0) { %>
-        <div class="col-12">
-            <h2 class="" style="color: tomato;">No hay productos que coincidan con esa búsqueda</h2>
-        </div>
+
+            results.msg
+
+            
         <% } %>
+
+    </div>
+
+        
     
     <div>
+        <% if(results.length > 0) { %>
         <% for(let i=0; i< results.length; i++) { %>
 
             <a href="/products/detail/<%= results[i].id%>">
@@ -52,6 +59,7 @@
 
             </a>
 
+        <% } %>
         <% } %>
     </div>
 

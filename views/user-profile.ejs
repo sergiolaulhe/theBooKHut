@@ -63,6 +63,18 @@
                     </button>
                 </div>
 
+                <% if (locals.isLogged) { %>
+
+                    <div class="submit-button">
+                        <button type="submit" class="button">
+                            <div>
+                                <a href="/products/add"><p>AGREGAR LIBRO</p></a>
+                            </div>
+                        </button>
+                    </div>
+
+                <% } %>
+
                 <div class="submit-button">
                     <button type="submit" class="button">
                         <div>

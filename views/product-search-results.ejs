@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Head-->
+
+<%- include('partials/head', { title: 'Resultados' }) %>
+
+<!--Body-->
+
+<body>
+
+<!--Header-->
+    
+    <%- include('partials/header') %>
+
+<!--Header-->
+
+<!--Main-->
+
+    <main>
+
+<!--Products search results-->
+
+        <section class="product-section-wrap">
+
+            <header class="section-header">
+                <h2>Resultados de la búsqueda: <%= %> </h2>
+            </header>
+
+            <div class="products-block-container">
+
+                <% if(results.length > 0) { %>
+                    <% for(let i=0; i< results.length; i++) { %>
+
+                        <a href="/products/detail/<%= results[i].id%>">
+
+                            <article class="product-container">
+
+                                <div class="item-img">    
+                                    <img class="book-image" src="/images/products/<%= results[i].image ? results[i].image : 'default.jpeg' %>" alt="book-image">
+                                </div>
+    
+                                <div class="item-info">
+                                    <h3 class="title"><%= results[i].title %></p>
+                                    <% if (results[i].author) { %>
+                                    <p class="author"><%= results[i].author.first_name %> <%= results[i].author.last_name %></p>
+                                    <% } %>
+                                </div>
+
+                                <div class="price-wrap">
+                                    <p class="price">$<%= results[i].price %></p>
+                                </div>
+    
+                                <div class="submit-button">
+                                    <button type="submit" class="button">Añadir a la cesta</button>
+                                </div>
+                                
+                            </article>
+
+                        </a>
+
+                    <% } %>
+                <% } %>
+        
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

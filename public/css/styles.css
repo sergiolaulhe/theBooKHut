@@ -11,6 +11,16 @@ body {
     font-size: 12px;
 }
 
+h1 {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
 a {
     display: inline-block;
     text-decoration: none;
@@ -172,19 +182,78 @@ header .altHeader {
 
 /* Productos */
 
-.product-section {
+.product-section-wrap {
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0 0 0;
+    background: #fff;
+    max-width: 100%;
 
 }
 
-.products-container {
-    display: flex;
+.section-header {
+    padding-top: 0;
+    border-bottom: 0.1rem solid #f0f0f0;
+}
+
+.products-block-container {
+    /* display: flex; */
     flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center; 
 }
 
-.book-item div img {
-    width: 25vw;
-    margin: 1rem;
+.product-container {
+    padding: 1rem;
+    width: 9rem;  
+}
 
+.item-img {
+    height: 11rem;
+}
+
+.item-info {
+    display: inline-block;
+    width: 100%;
+}
+
+.title {
+    line-height: 1.2rem;
+    padding-top: 0.5rem;
+    height: 4rem;
+    max-width: 15rem;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+
+}
+
+.author {
+    color: #4d4d4d;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 1.5rem;
+    max-width: 15rem;
+    line-height: 2rem;
+    overflow: hidden;
+}
+
+.price-wrap {
+    white-space: nowrap;
+    -webkit-align-self: flex-end;
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+    width: 100%;
+    min-height: 3rem;
+    margin-top: 0.5rem;
+}
+
+.price {
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    padding-top: 0.5rem;
+    color: rgb(221, 71, 139);
 }
 
 /***** Subscription *****/
@@ -427,13 +496,13 @@ input {
 
 .button {
     width: 100%;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 18px;
+    line-height: 25px;
     font-weight: 700;
     background-color: #03364F;
     color: #D0D3D4;
     border: 0px;
-    border-radius: 500px;
+    border-radius: 15px;
     display: inline-block;
     position: relative;
     text-align: center;
@@ -596,7 +665,11 @@ input {
 
 }
 
+.product-container {
+    padding: 1rem;
+    /* width: 14rem; */
+
 @media (min-width: 1279px){
 
 }
-}}
+}}}

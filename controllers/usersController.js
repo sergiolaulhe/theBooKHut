@@ -18,7 +18,7 @@ const userController = {
 //***** User Registration *****//
     
     register: (req, res) => {
-        res.render('register-create-form');
+        res.render('user-register-form');
         
     },
 
@@ -33,12 +33,12 @@ const userController = {
             const resultValidation = validationResult(req);
             
             if (resultValidation.errors.length > 0) {
-                return res.render('register-create-form', {
+                return res.render('user-register-form', {
                     errors: resultValidation.mapped(),
                     oldData: req.body
                 });   
             } else if (userInDB) {
-                return res.render('register-create-form', {
+                return res.render('user-register-form', {
                     errors: {
                         email: {
                             msg: 'Ya exite un usuario registrado con ese email'

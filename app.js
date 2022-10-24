@@ -61,20 +61,18 @@ const mainRoutes = require('./routes/mainRoutes');
 const usersRoutes = require('./routes/usersRoutes');
 const productsRouter = require('./routes/productsRoutes');
 
-
-// ***** APIs Route System require and use() ***** //
-
-const apiProductsRoutes = require('./routes/api/apiProductsRoutes');
-// const apiUsersRoutes = requires('./routes/api/apiUsersRoutes');
-
-
 app.use('/', mainRoutes);
 app.use('/users', usersRoutes);
 app.use('/products', productsRouter);
 
 
+// ***** APIs Route System require and use() ***** //
+
+const apiProductsRoutes = require('./routes/api/apiProductsRoutes');
+const apiUsersRoutes = require('./routes/api/apiUsersRoutes');
+
 app.use('/api/v1', apiProductsRoutes);
-// app.use('/api/v1', apiUsersRoutes);
+app.use('/api/v1', apiUsersRoutes);
 
 
 // ***** catch 404 and forward to error handler ***** //

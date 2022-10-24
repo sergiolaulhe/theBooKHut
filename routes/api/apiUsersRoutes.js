@@ -7,4 +7,14 @@ const router = express.Router();
 
 const apiUsersController =  require('../../controllers/api/apiUsersController');
 
+//***** APIs Users list *****//
+
+router.get('/users', apiUsersController.list);
+
+//***** APIs User detail *****//
+
+router.get('/user/:id', apiUsersController.detail);
+
+
+
 module.exports = router;
